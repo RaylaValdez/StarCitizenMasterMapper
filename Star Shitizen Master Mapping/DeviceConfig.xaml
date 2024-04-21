@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Star_Shitizen_Master_Mapping.DeviceConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
+             mc:Ignorable="d" 
+             d:DesignHeight="1025" d:DesignWidth="1287">
+    <Grid>
+        <Rectangle x:Name="uiDeviceConfigRectangle" Stroke="#FF3A7187" Fill="#C90A1D29"/>
+        <Label x:Name="uiDeviceConfigLabel" Content="Device Name" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="634" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0"/>
+        <Grid x:Name="uiDeviceAxisScreen" HorizontalAlignment="Right" Height="762" Margin="0,64,0,0" VerticalAlignment="Top" Width="754">
+            <local:DeviceCartesianGraph x:Name="uiDeviceOutputGraph" Margin="0,0,56,0" HorizontalAlignment="Right" Width="302" Height="302" VerticalAlignment="Top" />
+            <Label x:Name="uiDeviceZAxisLabel" Content="Z Axis" Height="45" Margin="155,340,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Grid Height="47" Margin="0,340,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceZAxisBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceZAxisFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Grid Height="47" Margin="0,410,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceXRotBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceXRotFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Grid Height="47" Margin="0,480,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceYRotBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceYRotFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Grid Height="47" Margin="0,550,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceZRotBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceZRotFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Grid Height="47" Margin="0,620,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceSliderBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceSliderFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Grid Height="47" Margin="0,690,56,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="301">
+                <Rectangle x:Name="uiDeviceDialBckGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Center" Width="302" RadiusX="13.917" RadiusY="13.917" Fill="#FF1F4763"/>
+                <Rectangle x:Name="uiDeviceDialFreGrnd" Height="47" Stroke="#FF3A7187" VerticalAlignment="Center" HorizontalAlignment="Left" Width="301" RadiusX="13.917" RadiusY="13.917" Fill="#FF3A7DB1"/>
+            </Grid>
+            <Label x:Name="uiDeviceXRotLabel" Content="X Rotation" Height="45" Margin="75,410,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label x:Name="uiDeviceYRotLabel" Content="Y Rotation" Height="45" Margin="75,480,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label x:Name="uiDeviceZRotLabel" Content="Z Rotation" Height="45" Margin="75,550,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label x:Name="uiDeviceSliderLabel" Content="Slider" Height="45" Margin="88,620,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label x:Name="uiDeviceDialLabel" Content="Dial" Height="45" Margin="88,690,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+            <Label x:Name="uiDeviceXYLabel" Content="X Axis / Y Axis" Height="45" Margin="0,120,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="289"/>
+            <Rectangle x:Name="uiDeviceZAxisInvertTgl" Margin="0,341,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="eventZAxisTglEnter" MouseLeave="eventZAxisTglLeave" MouseLeftButtonUp="eventZAxisTglClick" Fill="#C90A1D29"/>
+            <Rectangle x:Name="uiDevicesRXAxisInvertTgl" Margin="0,411,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="eventRXAxisTglEnter" MouseLeave="eventRXAxisTglLeave" MouseLeftButtonUp="eventRXAxisTglClick"/>
+            <Rectangle x:Name="uiDeviceRYAxisInvertTgl" Margin="0,481,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="eventRYAxisTglEnter" MouseLeave="eventRYAxisTglLeave" MouseLeftButtonUp="eventRYAxisTglClick"/>
+            <Rectangle x:Name="uiDeviceRZAxisInvertTgl" Margin="0,551,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="eventRZAxisTglEnter" MouseLeave="eventRZAxisTglLeave" MouseLeftButtonUp="eventRZAxisTglClick"/>
+            <Rectangle x:Name="uiDeviceSliderInvertTgl" Margin="0,621,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="eventSliderTglEnter" MouseLeave="eventSliderTglLeave" MouseLeftButtonUp="eventSliderTglClick"/>
+            <Rectangle x:Name="uiDeviceDialInvertTgl" Margin="0,691,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseEnter="enterDialTglEnter" MouseLeave="enterDialTglLeave" MouseLeftButtonUp="enterDialTglClick"/>
+            <Rectangle x:Name="uiDeviceXAxisInvertTgl" Margin="0,100,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" MouseLeave="eventXAxisTglLeave" Fill="#C90A1D29" MouseEnter="eventXAxisTglEnter" MouseLeftButtonUp="eventXAxisTglClick"/>
+            <Rectangle x:Name="uiDeviceYAxisInvertTgl" Margin="0,160,6,0" Stroke="#FF3A7187" RadiusX="22" RadiusY="22" HorizontalAlignment="Right" Width="45" Height="45" VerticalAlignment="Top" Fill="#C90A1D29" MouseEnter="eventYAxisTglEnter" MouseLeftButtonUp="eventYAxisTglClick" MouseLeave="eventYAxisTglLeave"/>
+            <Label x:Name="uiDeviceXYLabel_Copy" Content="&amp; POV Hat" Height="45" Margin="0,160,387,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Width="289"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

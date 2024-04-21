@@ -1,0 +1,107 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Star_Shitizen_Master_Mapping</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Media\bg_media.mp4" />
+    <None Remove="Media\bg_media.mpg" />
+    <None Remove="Media\scbgvideo.avi" />
+    <None Remove="Media\sc_bg_video.mp4" />
+    <None Remove="Media\sc_bg_video.mpg" />
+    <None Remove="Resources\Fonts\Furore.otf" />
+    <None Remove="Resources\Fonts\Jura-Bold.ttf" />
+    <None Remove="Resources\Fonts\Jura-Light.ttf" />
+    <None Remove="Resources\Fonts\Jura-Medium.ttf" />
+    <None Remove="Resources\Fonts\Jura-Regular.ttf" />
+    <None Remove="Resources\Fonts\Jura-SemiBold.ttf" />
+    <None Remove="Resources\Fonts\Jura-VariableFont_wght.ttf" />
+    <None Remove="Resources\Fonts\Quantico-Bold.ttf" />
+    <None Remove="Resources\Fonts\Quantico-BoldItalic.ttf" />
+    <None Remove="Resources\Fonts\Quantico-Italic.ttf" />
+    <None Remove="Resources\Fonts\Quantico-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Media\bg_media.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Media\bg_media.mpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" />
+    <PackageReference Include="vJoy.Wrapper" Version="1.0.0.5" />
+    <ProjectReference Include="..\..\GLGraph\src\GLGraphs.Wpf\GLGraphs.Wpf.csproj" />
+    <ProjectReference Include="..\..\GLGraph\src\GLGraphs\GLGraphs.csproj" />
+    <Resource Include="Resources\Fonts\Furore.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-SemiBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Jura-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico-BoldItalic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico-Italic.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\Quantico-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="sc_bg_video.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+</Project>

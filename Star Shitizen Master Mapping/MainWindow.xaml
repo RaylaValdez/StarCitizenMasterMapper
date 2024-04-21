@@ -1,0 +1,88 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
+        x:Name="SCMM_MainWindow" x:Class="Star_Shitizen_Master_Mapping.MainWindow"
+        mc:Ignorable="d"
+        Title="Star Shitizen Master Mapper" Background="#FFFBFBFB" WindowState="Maximized" Width="1920" Height="1080" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" WindowStyle="None" Closing="mainWindowClosing">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <MediaElement x:Name="bgMedia" Source="./Media/bg_media.mp4" UnloadedBehavior="Manual" Stretch="UniformToFill" MediaEnded="bgEnd" IsMuted="True"/>
+        <Rectangle x:Name="uiTitleBar" Height="56" VerticalAlignment="Top" Fill="#C90F2C3E" MouseDown="mouseTitleGrab" Stroke="#FF3A7187"/>
+        <Rectangle x:Name="uiCloseButtonBox" Height="42" VerticalAlignment="Top" Width="43" RadiusX="7.667" RadiusY="7.667" MouseEnter="mouseOverClose" Fill="#00000000" MouseLeave="mouseLeftCLose" HorizontalAlignment="Right" Margin="0,7,10,0" MouseLeftButtonUp="mouseCloseNow"/>
+        <Label x:Name="uiCloseButtonFont" Content="🗙" Height="48" Foreground="#FF3A7DB1" FontSize="48" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="mouseOverCFont" MouseLeave="mouseLeftCFont" MouseLeftButtonUp="mouseCloseNow" Margin="0,-3,8,0"/>
+        <Rectangle x:Name="uiMaximizeButtonBox" Height="42" VerticalAlignment="Top" Width="43" RadiusX="7.667" RadiusY="7.667" MouseEnter="mouseOverMaximize" Fill="#00000000" MouseLeave="mouseLeftMaximize" HorizontalAlignment="Right" Margin="0,7,58,0" MouseLeftButtonUp="mouseMaxNow"/>
+        <Label x:Name="uiMaximizeButtonFont" Content="🗖" Height="45" Foreground="#FF3A7DB1" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" Margin="0,0,58,0" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="mouseOverMaximize" MouseLeave="mouseLeftMaximize" MouseLeftButtonUp="mouseMaxNow" FontSize="42"/>
+        <Rectangle x:Name="uiMinButtonBox" Height="42" VerticalAlignment="Top" Width="43" RadiusX="7.667" RadiusY="7.667" MouseEnter="mouseOverMin" Fill="#00000000" MouseLeave="mouseLeftMin" HorizontalAlignment="Right" Margin="0,7,102,0" MouseLeftButtonUp="mouseMinNow"/>
+        <Label x:Name="uiMinButtonFont" Content="🗕" Height="45" Foreground="#FF3A7DB1" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" Margin="0,0,102,0" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="mouseOverMin" MouseLeave="mouseLeftMin" MouseLeftButtonUp="mouseMinNow" FontSize="42"/>
+        <Label Content="Star Citizen : Master Mapper" HorizontalAlignment="Left" Height="78" Margin="10,-8,0,0" VerticalAlignment="Top" Width="940" FontSize="48" Foreground="#FF3A7DB1" FontFamily="Jura Medium"/>
+        <Rectangle HorizontalAlignment="Left" Margin="0,55,0,0" Width="634" Fill="#C90F2C3E" Stroke="#FF3A7187"/>
+        <ScrollViewer x:Name="uiDevicePageScroll" HorizontalAlignment="Left" Margin="0,211,0,0" Width="634" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="uiDeviceStackPanel">
+                <Grid x:Name="uiVjoyGrid" Height="100">
+                    <Rectangle x:Name="uiVjoyRoundRect" Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiVjoyEnter" MouseLeave="uiVjoyLeave" MouseLeftButtonUp="uiVjoyClick" Margin="19,10,18,10"/>
+                    <Label x:Name="uiVjoyLabel" Content="vJoy | Virtual Joystick" HorizontalAlignment="Right" Width="512" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiVjoyEnter" MouseLeave="uiVjoyLeave" MouseLeftButtonUp="uiVjoyClick" Margin="0,22,54,22"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <ScrollViewer HorizontalAlignment="Left" Height="131" Margin="6,70,0,0" VerticalAlignment="Top" Width="622" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Height="107" Width="608" Orientation="Horizontal">
+                <Grid x:Name="uiDevicesGrid" Height="100" Width="200">
+                    <Rectangle x:Name="uiDevicesRoundRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="180" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDevicesEnter" MouseLeave="uiDevicesLeave" MouseLeftButtonUp="uiDevicesClick"/>
+                    <Label x:Name="uiDevicesLabel" Content="Devices" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="150" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" Margin="0,24,0,0" MouseEnter="uiDevicesEnter" MouseLeave="uiDevicesLeave" MouseLeftButtonUp="uiDevicesClick"/>
+                </Grid>
+                <Grid x:Name="uiBindingGrid" Height="100" Width="200">
+                    <Rectangle x:Name="uiBindingRoundRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="180" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiBindingEnter" MouseLeave="uiBindingLeave" MouseLeftButtonUp="uiBindingClick"/>
+                    <Label x:Name="uiBindingLabel" Content="Binding" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="150" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" Margin="0,24,0,0" MouseEnter="uiBindingEnter" MouseLeave="uiBindingLeave" MouseLeftButtonUp="uiBindingClick"/>
+                </Grid>
+                <Grid x:Name="uiVisualGrid" Height="100" Width="200">
+                    <Rectangle x:Name="uiVisualRoundRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="180" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiVisualEnter" MouseLeave="uiVisualLeave" MouseLeftButtonUp="uiVisualClick"/>
+                    <Label x:Name="uiVisualLabel" Content="Visual&#xA;" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="150" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" Margin="0,24,0,0" MouseEnter="uiVisualEnter" MouseLeave="uiVisualLeave" MouseLeftButtonUp="uiVisualClick"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <Rectangle x:Name="uiToggleFrame" Height="20" Margin="0,18,177,0" Stroke="#FF3A7187" VerticalAlignment="Top" Width="40" RadiusX="9.5" RadiusY="9.5" Fill="#FF1F4763" HorizontalAlignment="Right" MouseLeftButtonUp="uiTglClick"/>
+        <Rectangle
+            x:Name="uiToggleSwitch"
+            Height="20"
+            Margin="0,18,177,0"
+            Stroke="#FF3A7181"
+            VerticalAlignment="Top"
+            Width="20"
+            RadiusX="9.5"
+            RadiusY="9.5"
+            Fill="#FF3A7DB1"
+            MouseEnter="uiTglEnter"
+            MouseLeave="uiTglLeave"
+            MouseLeftButtonUp="uiTglClick"
+            HorizontalAlignment="Right">
+        </Rectangle>
+        <Rectangle Height="52" Margin="0,2,155,0" Stroke="#5F3A7DB1" VerticalAlignment="Top" Width="2" HorizontalAlignment="Right"/>
+        <Grid x:Name="uiVjoySettingsGrid" Margin="634,55,0,0" d:IsHidden="True">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle x:Name="uiVjoySettingsRectangle" Stroke="#FF3A7187" Fill="#C90A1D29" Margin="-1,0,0,0"/>
+            <Label x:Name="uiVjoySettingsInstalledLabel" Content="vJoy isn't present on your system.&#xD;&#xA;The button below will open a browser window." HorizontalAlignment="Left" Height="215" VerticalAlignment="Top" Width="1061" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0"/>
+            <Rectangle x:Name="uiVjoySettingsDownloadRRect" HorizontalAlignment="Left" Height="88" Margin="355,237,0,0" VerticalAlignment="Top" Width="371" RadiusX="33" RadiusY="33" Fill="#FF0F2634" Stroke="#FF3A7187" MouseEnter="uiVjoySettingsDownloadEnter" MouseLeave="uiVjoySettingsDownloadLeave" MouseLeftButtonUp="uiVjoySettingsDownloadClick"/>
+            <Label x:Name="uiVjoySettingsDownloadLabel" Content="Take me there!" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="279" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiVjoySettingsDownloadEnter" MouseLeave="uiVjoySettingsDownloadLeave" MouseLeftButtonUp="uiVjoySettingsDownloadClick" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="402,255,0,0"/>
+        </Grid>
+        <local:DeviceConfig x:Name="dynamicDeviceConfig" Margin="633,55,0,-1"/>
+
+    </Grid>
+
+</Window>
+    
