@@ -45,6 +45,8 @@ namespace Star_Shitizen_Master_Mapping
 
         public float zAxisMaxWidth = 0f;
 
+        SolidColorBrush HoverColor = new SolidColorBrush();
+        SolidColorBrush HoverColorStroke = new SolidColorBrush();
         SolidColorBrush TglOn = new SolidColorBrush();
         SolidColorBrush TglOff = new SolidColorBrush();
         SolidColorBrush TglOffStroke = new SolidColorBrush();
@@ -73,6 +75,8 @@ namespace Star_Shitizen_Master_Mapping
             povCircleSeries = uiDeviceOutputGraph.Graph.State.AddSeries(SeriesType.Line, "povCircle");
             povSeries = uiDeviceOutputGraph.Graph.State.AddSeries(SeriesType.Point, deviceName + "_pov");
 
+            HoverColor.Color = Color.FromArgb(127, 0, 0, 0);
+            HoverColorStroke.Color = Color.FromArgb(255,255,255,255);
             TglOn.Color = Color.FromArgb(255, 58, 125, 177);
             TglOff.Color = Color.FromArgb(201,10,29,41);
             TglOffStroke.Color = Color.FromArgb(255, 58, 113, 135);
@@ -99,7 +103,7 @@ namespace Star_Shitizen_Master_Mapping
                             float adjustedSlider = inputState.Sliders[0] / 65535f;
                             float adjustedDial = inputState.Sliders[1] / 65535f;
                             float adjustedPov = inputState.PointOfViewControllers[0] / 36000f;
-                            povPointer(adjustedPov, 0.75f);
+                            povPointer(adjustedPov, 0.7f);
                             joyPointer(XAxisInvert ? -adjustedX : adjustedX, YAxisInvert ? -adjustedY : adjustedY);
                             ZAxis(ZAxisInvert ? (1.0f - adjustedZ) : adjustedZ);
                             XRot(RXAxisInvert ? (1.0f - adjustedXRot) : adjustedXRot);
@@ -128,23 +132,11 @@ namespace Star_Shitizen_Master_Mapping
             var directInput = new DirectInput();
             var tempInputDevice = directInput.GetDevices().FirstOrDefault(device => device.ProductGuid.ToString() == deviceID);
 
-            graphDrawCircle(povCircleSeries, 0f, 0f, 0.75f, 24);
+            graphDrawCircle(povCircleSeries, 0f, 0f, 0.7f, 24);
             povCircleSeries.Color = new Color4(85, 85, 85, 255);
             xySeries.Color = new Color4(58, 125, 177, 255);
-            povSeries.Color = new Color4(31, 71, 99, 255);
+            povSeries.Color = new Color4(0, 191, 145, 255);
             povSeries.PointShape = SeriesPointShape.Circle;
-
-            getSetInvert(ref XAxisInvert, "X_Axis_Invert");
-            getSetInvert(ref YAxisInvert, "Y_Axis_Invert");
-            getSetInvert(ref ZAxisInvert, "Z_Axis_Invert");
-            getSetInvert(ref RXAxisInvert, "RX_Axis_Invert");
-            getSetInvert(ref RYAxisInvert, "RY_Axis_Invert");
-            getSetInvert(ref RZAxisInvert, "RZ_Axis_Invert");
-            getSetInvert(ref SliderInvert, "Slider_Axis_Invert");
-            getSetInvert(ref DialInvert, "D_Axis_Invert");
-
-
-
 
             if (tempInputDevice != null)
             {
@@ -215,13 +207,13 @@ namespace Star_Shitizen_Master_Mapping
 
                 if (MainWindow.devicesConfig.Read("RX_Axis_Invert", inputDevice.Properties.ProductName) == "false")
                 {
-                    uiDevicesRXAxisInvertTgl.Fill = TglOff;
-                    uiDevicesRXAxisInvertTgl.Stroke = TglOffStroke;
+                    uiDeviceRXAxisInvertTgl.Fill = TglOff;
+                    uiDeviceRXAxisInvertTgl.Stroke = TglOffStroke;
                 }
                 else
                 {
-                    uiDevicesRXAxisInvertTgl.Fill = TglOn;
-                    uiDevicesRXAxisInvertTgl.Stroke = TglOn;
+                    uiDeviceRXAxisInvertTgl.Fill = TglOn;
+                    uiDeviceRXAxisInvertTgl.Stroke = TglOn;
                 }
 
                 if (MainWindow.devicesConfig.Read("RY_Axis_Invert", inputDevice.Properties.ProductName) == "false")
@@ -256,6 +248,14 @@ namespace Star_Shitizen_Master_Mapping
 
             }
 
+            getSetInvert(ref XAxisInvert, "X_Axis_Invert");
+            getSetInvert(ref YAxisInvert, "Y_Axis_Invert");
+            getSetInvert(ref ZAxisInvert, "Z_Axis_Invert");
+            getSetInvert(ref RXAxisInvert, "RX_Axis_Invert");
+            getSetInvert(ref RYAxisInvert, "RY_Axis_Invert");
+            getSetInvert(ref RZAxisInvert, "RZ_Axis_Invert");
+            getSetInvert(ref SliderInvert, "Slider_Axis_Invert");
+            getSetInvert(ref DialInvert, "D_Axis_Invert");
 
             if (device != null)
             {
@@ -369,8 +369,8 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventZAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceZAxisInvertTgl.Fill = TglOn;
-            uiDeviceZAxisInvertTgl.Stroke = TglOn;
+            uiDeviceZAxisInvertTgl.Fill = HoverColor;
+            uiDeviceZAxisInvertTgl.Stroke = HoverColorStroke;
             uiDeviceZAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
@@ -385,6 +385,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceZAxisInvertTgl.Fill = TglOff;
                 uiDeviceZAxisInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceZAxisInvertTgl.Fill = TglOn;
+                uiDeviceZAxisInvertTgl.Stroke = TglOn;
+            }
             
             invertTT.IsOpen = false;
         }
@@ -396,6 +401,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Z_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Z_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 ZAxisInvert = true;
+                uiDeviceZAxisInvertTgl.Fill = TglOn;
+                uiDeviceZAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -403,14 +410,16 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Z_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Z_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 ZAxisInvert = false;
+                uiDeviceZAxisInvertTgl.Fill = TglOff;
+                uiDeviceZAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventRXAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDevicesRXAxisInvertTgl.Fill = TglOn;
-            uiDevicesRXAxisInvertTgl.Stroke = TglOn;
-            uiDevicesRXAxisInvertTgl.ToolTip = invertTT;
+            uiDeviceRXAxisInvertTgl.Fill = HoverColor;
+            uiDeviceRXAxisInvertTgl.Stroke = HoverColorStroke;
+            uiDeviceRXAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
             invertTT.IsOpen = true;
@@ -420,8 +429,13 @@ namespace Star_Shitizen_Master_Mapping
         {
             if (!RXAxisInvert)
             {
-                uiDevicesRXAxisInvertTgl.Fill = TglOff;
-                uiDevicesRXAxisInvertTgl.Stroke = TglOffStroke;
+                uiDeviceRXAxisInvertTgl.Fill = TglOff;
+                uiDeviceRXAxisInvertTgl.Stroke = TglOffStroke;
+            }
+            else
+            {
+                uiDeviceRXAxisInvertTgl.Fill = TglOn;
+                uiDeviceRXAxisInvertTgl.Stroke = TglOn;
             }
 
             invertTT.IsOpen = false;
@@ -434,6 +448,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RX_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RX_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 RXAxisInvert = true;
+                uiDeviceRXAxisInvertTgl.Fill = TglOn;
+                uiDeviceRXAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -441,13 +457,15 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RX_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RX_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 RXAxisInvert = false;
+                uiDeviceRXAxisInvertTgl.Fill = TglOff;
+                uiDeviceRXAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventRYAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceRYAxisInvertTgl.Fill = TglOn;
-            uiDeviceRYAxisInvertTgl.Stroke = TglOn;
+            uiDeviceRYAxisInvertTgl.Fill = HoverColor;
+            uiDeviceRYAxisInvertTgl.Stroke = HoverColorStroke;
             uiDeviceRYAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
@@ -461,6 +479,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceRYAxisInvertTgl.Fill = TglOff;
                 uiDeviceRYAxisInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceRYAxisInvertTgl.Fill = TglOn;
+                uiDeviceRYAxisInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -472,6 +495,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RY_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RY_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 RYAxisInvert = true;
+                uiDeviceRYAxisInvertTgl.Fill = TglOn;
+                uiDeviceRYAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -479,13 +504,15 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RY_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RY_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 RYAxisInvert = false;
+                uiDeviceRYAxisInvertTgl.Fill = TglOff;
+                uiDeviceRYAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventRZAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceRZAxisInvertTgl.Fill = TglOn;
-            uiDeviceRZAxisInvertTgl.Stroke = TglOn;
+            uiDeviceRZAxisInvertTgl.Fill = HoverColor;
+            uiDeviceRZAxisInvertTgl.Stroke = HoverColorStroke;
             uiDeviceRZAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
@@ -499,6 +526,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceRZAxisInvertTgl.Fill = TglOff;
                 uiDeviceRZAxisInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceRZAxisInvertTgl.Fill = TglOn;
+                uiDeviceRZAxisInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -510,6 +542,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RZ_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RZ_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 RZAxisInvert = true;
+                uiDeviceRZAxisInvertTgl.Fill = TglOn;
+                uiDeviceRZAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -517,13 +551,15 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("RZ_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("RZ_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 RZAxisInvert = false;
+                uiDeviceRZAxisInvertTgl.Fill = TglOff;
+                uiDeviceRZAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventSliderTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceSliderInvertTgl.Fill = TglOn;
-            uiDeviceSliderInvertTgl.Stroke = TglOn;
+            uiDeviceSliderInvertTgl.Fill = HoverColor;
+            uiDeviceSliderInvertTgl.Stroke = HoverColorStroke;
             uiDeviceSliderInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
@@ -537,6 +573,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceSliderInvertTgl.Fill = TglOff;
                 uiDeviceSliderInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceSliderInvertTgl.Fill = TglOn;
+                uiDeviceSliderInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -547,21 +588,25 @@ namespace Star_Shitizen_Master_Mapping
             {
                 MainWindow.devicesConfig.DeleteKey("Slider_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Slider_Axis_Invert", "true", inputDevice.Properties.ProductName);
-                RZAxisInvert = true;
+                SliderInvert = true;
+                uiDeviceSliderInvertTgl.Fill = TglOn;
+                uiDeviceSliderInvertTgl.Stroke = TglOn;
 
             }
             else
             {
                 MainWindow.devicesConfig.DeleteKey("Slider_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Slider_Axis_Invert", "false", inputDevice.Properties.ProductName);
-                RZAxisInvert = false;
+                SliderInvert = false;
+                uiDeviceSliderInvertTgl.Fill = TglOff;
+                uiDeviceSliderInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void enterDialTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceDialInvertTgl.Fill = TglOn;
-            uiDeviceDialInvertTgl.Stroke = TglOn;
+            uiDeviceDialInvertTgl.Fill = HoverColor;
+            uiDeviceDialInvertTgl.Stroke = HoverColorStroke;
             uiDeviceDialInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert?";
 
@@ -575,6 +620,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceDialInvertTgl.Fill = TglOff;
                 uiDeviceDialInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceDialInvertTgl.Fill = TglOn;
+                uiDeviceDialInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -586,6 +636,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Dial_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Dial_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 DialInvert = true;
+                uiDeviceDialInvertTgl.Fill = TglOn;
+                uiDeviceDialInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -593,13 +645,15 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Dial_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Dial_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 DialInvert = false;
+                uiDeviceDialInvertTgl.Fill = TglOff;
+                uiDeviceDialInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventXAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceXAxisInvertTgl.Fill = TglOn;
-            uiDeviceXAxisInvertTgl.Stroke = TglOn;
+            uiDeviceXAxisInvertTgl.Fill = HoverColor;
+            uiDeviceXAxisInvertTgl.Stroke = HoverColorStroke;
             uiDeviceXAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert X?";
 
@@ -613,6 +667,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceXAxisInvertTgl.Fill = TglOff;
                 uiDeviceXAxisInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceXAxisInvertTgl.Fill = TglOn;
+                uiDeviceXAxisInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -624,6 +683,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("X_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("X_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 XAxisInvert = true;
+                uiDeviceXAxisInvertTgl.Fill = TglOn;
+                uiDeviceXAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -631,13 +692,15 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("X_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("X_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 XAxisInvert = false;
+                uiDeviceXAxisInvertTgl.Fill = TglOff;
+                uiDeviceXAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
         private void eventYAxisTglEnter(object sender, MouseEventArgs e)
         {
-            uiDeviceYAxisInvertTgl.Fill = TglOn;
-            uiDeviceYAxisInvertTgl.Stroke = TglOn;
+            uiDeviceYAxisInvertTgl.Fill = HoverColor;
+            uiDeviceYAxisInvertTgl.Stroke = HoverColorStroke;
             uiDeviceYAxisInvertTgl.ToolTip = invertTT;
             invertTT.Content = "Invert Y?";
 
@@ -651,6 +714,11 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceYAxisInvertTgl.Fill = TglOff;
                 uiDeviceYAxisInvertTgl.Stroke = TglOffStroke;
             }
+            else
+            {
+                uiDeviceYAxisInvertTgl.Fill = TglOn;
+                uiDeviceYAxisInvertTgl.Stroke = TglOn;
+            }
 
             invertTT.IsOpen = false;
         }
@@ -662,6 +730,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Y_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Y_Axis_Invert", "true", inputDevice.Properties.ProductName);
                 YAxisInvert = true;
+                uiDeviceYAxisInvertTgl.Fill = TglOn;
+                uiDeviceYAxisInvertTgl.Stroke = TglOn;
 
             }
             else
@@ -669,6 +739,8 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.DeleteKey("Y_Axis_Invert", inputDevice.Properties.ProductName);
                 MainWindow.devicesConfig.Write("Y_Axis_Invert", "false", inputDevice.Properties.ProductName);
                 YAxisInvert = false;
+                uiDeviceYAxisInvertTgl.Fill = TglOff;
+                uiDeviceYAxisInvertTgl.Stroke = TglOffStroke;
             }
         }
 
