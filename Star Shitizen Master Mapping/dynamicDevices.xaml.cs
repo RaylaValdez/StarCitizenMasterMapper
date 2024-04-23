@@ -39,6 +39,7 @@ namespace Star_Shitizen_Master_Mapping
         public string deviceID { get; set; }
 
         public bool selected { get; set; }
+        
 
         SolidColorBrush CloseHoverFill = new SolidColorBrush();
         SolidColorBrush CloseDefaultFill = new SolidColorBrush();

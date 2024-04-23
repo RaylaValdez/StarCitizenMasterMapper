@@ -85,11 +85,13 @@ namespace Star_Shitizen_Master_Mapping
             if (!state)
             {
                 uiDevicePageScroll.Visibility = Visibility.Hidden;
+                dynamicDeviceConfig.Visibility = Visibility.Hidden;
                 uiDevicePageScroll.IsEnabled = false;
             }
             else
             {
                 uiDevicePageScroll.Visibility = Visibility.Visible;
+                dynamicDeviceConfig.Visibility = Visibility.Visible;
                 uiDevicePageScroll.IsEnabled = true;
             }
         }
