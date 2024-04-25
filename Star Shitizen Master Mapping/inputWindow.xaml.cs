@@ -20,7 +20,8 @@ namespace Star_Shitizen_Master_Mapping
     /// </summary>
     public partial class inputWindow : UserControl
     {
-        private Action<float> action;
+        private Action<float>? action = null;
+        private float originalValue = 0f;
         SolidColorBrush HoverColor = new SolidColorBrush();
         SolidColorBrush HoverColorStroke = new SolidColorBrush();
         SolidColorBrush TglOn = new SolidColorBrush();
@@ -47,9 +48,23 @@ namespace Star_Shitizen_Master_Mapping
             CloseFontDefault.Color = Color.FromArgb(255, 58, 125, 177);
         }
 
-        public void Update(dynamicDevices device)
+        public void SetVisible(bool visible)
         {
+            if (!visible)
+            {
+                Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Visibility = Visibility.Visible;
+            }
+        }
 
+        public void Update(float initialValue, string description)
+        {
+            originalValue = initialValue;
+            uiDeviceConfigValueDescriptionLabel.Content = description;
+            uiDeviceConfigValueTextBox.Text = initialValue.ToString("F3"); // 3 decimal places
         }
 
         public void updateValue(Action<float> value)
@@ -60,8 +75,21 @@ namespace Star_Shitizen_Master_Mapping
         private void eventTextBoxChanged(object sender, TextChangedEventArgs e)
         {
             float newValue;
-            float.TryParse(uiDeviceConfigValueTextBox.Text, out newValue);
-            action(newValue);
+            if (float.TryParse(uiDeviceConfigValueTextBox.Text, out newValue))
+            {
+                newValue = MathF.Min(MathF.Max(newValue, 0f), 1f); // clamp value from 0-1
+                action?.Invoke(newValue); // call callback function (if it exists)
+            }
+            else
+            {
+                uiDeviceConfigValueTextBox.Text = originalValue.ToString("F3"); // 3 decimal places
+            }
+        }
+
+        private void eventSaveMouseButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            SetVisible(false);
+            action = null;
         }
     }
 }

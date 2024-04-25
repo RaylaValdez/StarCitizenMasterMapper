@@ -36,11 +36,11 @@ namespace Star_Shitizen_Master_Mapping
     {
         public string deviceName = string.Empty;
         public string deviceID { get; set; }
-        
+
         public static Joystick inputDevice { get; set; }
         public bool inpDvAcquired = false;
         public SharpDX.DirectInput.JoystickState inputState = new SharpDX.DirectInput.JoystickState();
-        
+
         public GraphSeries<string> xySeries { get; set; }
         public GraphSeries<string> povCircleSeries { get; set; }
         public GraphSeries<string> povSeries { get; set; }
@@ -149,10 +149,10 @@ namespace Star_Shitizen_Master_Mapping
             curveLineSeries = uiDeviceOutputGraph.Graph.State.AddSeries(SeriesType.Line, "dynamicCurve");
 
             HoverColor.Color = Color.FromArgb(127, 0, 0, 0);
-            HoverColorStroke.Color = Color.FromArgb(255,255,255,255);
+            HoverColorStroke.Color = Color.FromArgb(255, 255, 255, 255);
             TglOn.Color = Color.FromArgb(255, 58, 125, 177);
             TglOn2.Color = Color.FromArgb(255, 31, 71, 99);
-            TglOff.Color = Color.FromArgb(201,10,29,41);
+            TglOff.Color = Color.FromArgb(201, 10, 29, 41);
             TglOffStroke.Color = Color.FromArgb(255, 58, 113, 135);
 
             invertTT.Content = "Invert?";
@@ -160,14 +160,14 @@ namespace Star_Shitizen_Master_Mapping
             lowerDeadZoneTT.Content = "Lower Deadzone";
             saturationTT.Content = "Sensitivity (inverse)";
 
-            MinSliderMargin = new Thickness(10,0,0,0);
+            MinSliderMargin = new Thickness(10, 0, 0, 0);
             MaxSliderMargin = new Thickness(277, 0, 0, 0);
 
             MinDeadZoneSliderMargin = new Thickness(0, 0, 0, 0);
             MaxDeadZoneSliderMargin = new Thickness(291, 0, 0, 0);
 
-            MinDZSaturationSliderMargin = new Thickness(0,0,0,0);
-            MaxDZSaturationSliderMargin = new Thickness(0,0,291,0);
+            MinDZSaturationSliderMargin = new Thickness(0, 0, 0, 0);
+            MaxDZSaturationSliderMargin = new Thickness(0, 0, 291, 0);
 
             uiXYCurveWindow.Visibility = Visibility.Hidden;
 
@@ -210,7 +210,7 @@ namespace Star_Shitizen_Master_Mapping
                             }
                         }
                     }
-                    
+
                     Thread.Sleep(25);
                 }
             });
@@ -335,13 +335,13 @@ namespace Star_Shitizen_Master_Mapping
 
                 buttons.Clear();
                 uiDeviceButtonsWrapPanel.Children.Clear();
-                
+
                 for (var i = 0; i < inputDevice.Capabilities.ButtonCount; i++)
                 {
                     var button = new dynamicDeviceButton(i);
                     buttons.Add(button);
                     uiDeviceButtonsWrapPanel.Children.Add(button);
-                    
+
                 }
 
 
@@ -351,7 +351,7 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceOutputGraph.Graph.State.Camera.Target.VerticalSize = 2f;
                 uiDeviceOutputGraph.Graph.State.Camera.Snap();
 
-                
+
 
 
             }
@@ -436,19 +436,19 @@ namespace Star_Shitizen_Master_Mapping
             saturationSliderMove(1f - DialAxisSaturation, uiDeviceDialDZSaturationSlider);
 
 
-            uiDeviceZAxisCurvePercent.Content = ConvertToPercentageString(ZAxisCurve);         
+            uiDeviceZAxisCurvePercent.Content = ConvertToPercentageString(ZAxisCurve);
             uiDeviceRXAxisCurvePercent.Content = ConvertToPercentageString(RXAxisCurve);
             uiDeviceRYAxisCurvePercent.Content = ConvertToPercentageString(RYAxisCurve);
             uiDeviceRZAxisCurvePercent.Content = ConvertToPercentageString(RZAxisCurve);
             uiDeviceSliderAxisCurvePercent.Content = ConvertToPercentageString(SliderAxisCurve);
-            uiDeviceDialAxisCurvePercent.Content = ConvertToPercentageString(DialAxisCurve);          
-            
+            uiDeviceDialAxisCurvePercent.Content = ConvertToPercentageString(DialAxisCurve);
+
             // Modes
 
             if (ZAxisMode == 0)
             {
                 uiDeviceZAxizLowerDeadZoneSlider.Visibility = Visibility.Hidden;
-                sliderMoveAndSet(0f,"Z_Axis_LDZ",ref ZAxisLDZ, uiDeviceZAxizLowerDeadZoneSlider);
+                sliderMoveAndSet(0f, "Z_Axis_LDZ", ref ZAxisLDZ, uiDeviceZAxizLowerDeadZoneSlider);
                 sliderMoveAndSet(0f, "Z_Axis_DZ", ref ZAxisDZ, uiDeviceZAxizDeadZoneSlider);
             }
             else if (ZAxisMode == 1)
@@ -467,7 +467,7 @@ namespace Star_Shitizen_Master_Mapping
             else if (RXAxisMode == 1)
             {
                 uiDeviceRXAxisLowerDeadZoneSlider.Visibility = Visibility.Visible;
-                sliderMoveAndSet(0.515f, "RX_Axis_DZ",  ref RXAxisDZ,  uiDeviceRXAxisDeadZoneSlider);
+                sliderMoveAndSet(0.515f, "RX_Axis_DZ", ref RXAxisDZ, uiDeviceRXAxisDeadZoneSlider);
                 sliderMoveAndSet(0.485f, "RX_Axis_LDZ", ref RXAxisLDZ, uiDeviceRXAxisLowerDeadZoneSlider);
             }
 
@@ -501,12 +501,12 @@ namespace Star_Shitizen_Master_Mapping
             {
                 uiDeviceSliderLowerDeadZoneSlider.Visibility = Visibility.Hidden;
                 sliderMoveAndSet(0f, "RZ_Axis_LDZ", ref SliderAxisLDZ, uiDeviceSliderLowerDeadZoneSlider);
-                sliderMoveAndSet(0f, "RZ_Axis_DZ", ref SliderAxisDZ,   uiDeviceSliderDeadZoneSlider);
+                sliderMoveAndSet(0f, "RZ_Axis_DZ", ref SliderAxisDZ, uiDeviceSliderDeadZoneSlider);
             }
             else if (SliderAxisMode == 1)
             {
                 uiDeviceSliderLowerDeadZoneSlider.Visibility = Visibility.Visible;
-                sliderMoveAndSet(0.515f, "Slider_Axis_DZ", ref  SliderAxisDZ,  uiDeviceSliderDeadZoneSlider);
+                sliderMoveAndSet(0.515f, "Slider_Axis_DZ", ref SliderAxisDZ, uiDeviceSliderDeadZoneSlider);
                 sliderMoveAndSet(0.485f, "Slider_Axis_LDZ", ref SliderAxisLDZ, uiDeviceSliderLowerDeadZoneSlider);
             }
 
@@ -514,12 +514,12 @@ namespace Star_Shitizen_Master_Mapping
             {
                 uiDeviceDialLowerDeadZoneSlider.Visibility = Visibility.Hidden;
                 sliderMoveAndSet(0f, "Dial_Axis_LDZ", ref DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
-                sliderMoveAndSet(0f, "Dial_Axis_DZ", ref  DialAxisDZ,  uiDeviceDialDeadZoneSlider);
+                sliderMoveAndSet(0f, "Dial_Axis_DZ", ref DialAxisDZ, uiDeviceDialDeadZoneSlider);
             }
             else if (DialAxisMode == 1)
             {
                 uiDeviceDialLowerDeadZoneSlider.Visibility = Visibility.Visible;
-                sliderMoveAndSet(0.515f, "Dial_Axis_DZ", ref  DialAxisDZ,  uiDeviceDialDeadZoneSlider);
+                sliderMoveAndSet(0.515f, "Dial_Axis_DZ", ref DialAxisDZ, uiDeviceDialDeadZoneSlider);
                 sliderMoveAndSet(0.485f, "Dial_Axis_LDZ", ref DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
             }
 
@@ -527,9 +527,9 @@ namespace Star_Shitizen_Master_Mapping
 
             uiXYCurveWindow.Update(device);
 
-            
 
-    
+
+
 
 
             if (device != null)
@@ -548,7 +548,7 @@ namespace Star_Shitizen_Master_Mapping
                 {
                     uiDeviceOutputGraph.Visibility = Visibility.Visible;
                     uiDeviceAxisScreen.Visibility = Visibility.Visible;
-                    uiDeviceXYCurvesButton.Visibility =  Visibility.Visible;
+                    uiDeviceXYCurvesButton.Visibility = Visibility.Visible;
                     uiDeviceXYCurvesButton1.Visibility = Visibility.Visible;
                     uiDeviceXYCurvesButton2.Visibility = Visibility.Visible;
                     uiDeviceXYCurvesButton3.Visibility = Visibility.Visible;
@@ -563,7 +563,7 @@ namespace Star_Shitizen_Master_Mapping
         private void joyPointer(float x, float y)
         {
             xySeries.Clear();
-            xySeries.Add(deviceName, calculateQuadraticY(XAxisCurve,x), calculateQuadraticY(YAxisCurve,y));
+            xySeries.Add(deviceName, calculateQuadraticY(XAxisCurve, x), calculateQuadraticY(YAxisCurve, y));
         }
 
         private void povPointer(float povhat, float radius)
@@ -584,10 +584,10 @@ namespace Star_Shitizen_Master_Mapping
                 povSeries.Clear();
                 povSeries.Add(deviceName + "_povhat", x, y);
             }
-            
+
         }
 
-        private void graphDrawCircle(GraphSeries<string> series,float cx, float cy, float radius, int segments)
+        private void graphDrawCircle(GraphSeries<string> series, float cx, float cy, float radius, int segments)
         {
             for (int i = 0; i <= segments; i++)
             {
@@ -608,25 +608,25 @@ namespace Star_Shitizen_Master_Mapping
                 return uiElement.Width;
             }
         }
-        
+
         private void SetUiWidth(FrameworkElement uiElement, double newWidth)
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.Invoke(() => SetUiWidth(uiElement,newWidth));
+                Dispatcher.Invoke(() => SetUiWidth(uiElement, newWidth));
             }
             else
             {
                 uiElement.Width = newWidth;
-                
+
             }
         }
 
         private void ZAxis(float zAxis)
         {
             var rangedAxis = calculateRange(zAxis, ZAxisLDZ, ZAxisDZ, ZAxisSaturation);
-            var curvedAxis = calculateQuadraticY(ZAxisCurve,rangedAxis);
-            
+            var curvedAxis = calculateQuadraticY(ZAxisCurve, rangedAxis);
+
             SetUiWidth(uiDeviceZAxisFreGrnd, (double)(GetUiWidth(uiDeviceZAxisBckGrnd) * curvedAxis));
         }
 
@@ -709,6 +709,21 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
+        public static void curveMoveAndSet(float newvalue, string key, ref float slider, FrameworkElement sliderele, System.Windows.Controls.Label percentele)
+        {
+            if (inputDevice != null)
+            {
+                double newX = Math.Min(Math.Max(MinSliderMargin.Left + (newvalue * (MaxSliderMargin.Left - MinSliderMargin.Left)), MinSliderMargin.Left), MaxSliderMargin.Left);
+                sliderele.Margin = new Thickness(newX, 0, 0, 0);
+
+                percentele.Content = ConvertToPercentageString(newvalue);
+
+                MainWindow.devicesConfig.Write(key, newvalue.ToString(), inputDevice.Properties.ProductName);
+
+                slider = newvalue;
+            }
+        }
+
         public static void sliderMoveAndSet(float newvalue, string key, ref float slider, FrameworkElement devconf)
         {
             if (inputDevice != null)
@@ -725,27 +740,12 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
-        public void getSetPreciseInput(ref float configValue, string key, string type)
+        public void getSetPreciseInput(string name, float initialConfigValue, Action<float> updateConfigValue)
         {
-           switch (type)
-            {
-                case "deadzone":
-                {
-                    break;
-                }
-                case "lowerdeadzone":
-                {
-                    break;
-                }
-                case "saturation":
-                {
-                    break;
-                }
-                case "curve":
-                {
-                    break;
-                }
-            }
+            isDragging = false;
+            uiDeviceConfigValueWindow.SetVisible(true);
+            uiDeviceConfigValueWindow.updateValue(updateConfigValue);
+            uiDeviceConfigValueWindow.Update(initialConfigValue, name); // order is important - this needs to come after updateValue
         }
 
 
@@ -760,7 +760,7 @@ namespace Star_Shitizen_Master_Mapping
             invertTT.Content = "Invert?";
 
             invertTT.IsOpen = true;
-            
+
         }
 
         private void eventZAxisTglLeave(object sender, MouseEventArgs e)
@@ -775,7 +775,7 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceZAxisInvertTgl.Fill = TglOn;
                 uiDeviceZAxisInvertTgl.Stroke = TglOn;
             }
-            
+
             invertTT.IsOpen = false;
         }
 
@@ -1129,13 +1129,25 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
-        
+
 
         private void eventZAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceZAxisCurveSlider);
-            isDragging = true;
-            uiDeviceZAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceZAxisCurveSlider);
+                isDragging = true;
+                uiDeviceZAxisCurveSlider.CaptureMouse();
+
+            }
+            else
+            {
+                uiDeviceZAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Z Axis Curve", ZAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "Z_Axis_Curve", ref ZAxisCurve, uiDeviceZAxisCurveSlider, uiDeviceZAxisCurvePercent);
+                });
+            }
         }
 
         private void eventZAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1165,15 +1177,15 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
-        public static void sliderMove(float axiscurve, FrameworkElement devconf )
+        public static void sliderMove(float axiscurve, FrameworkElement devconf)
         {
             double newPos = MinSliderMargin.Left + (axiscurve * (MaxSliderMargin.Left - MinSliderMargin.Left));
 
             newPos = Math.Max(MinSliderMargin.Left, Math.Min(MaxSliderMargin.Left, newPos));
 
-            devconf.Margin = new Thickness(newPos,0,0,0);
+            devconf.Margin = new Thickness(newPos, 0, 0, 0);
 
-            
+
         }
 
         public static void deadZoneSliderMove(float axiscurve, FrameworkElement devconf)
@@ -1192,6 +1204,13 @@ namespace Star_Shitizen_Master_Mapping
             newPos = Math.Max(MinDZSaturationSliderMargin.Right, Math.Min(MaxDZSaturationSliderMargin.Right, newPos));
 
             devconf.Margin = new Thickness(0, 0, newPos, 0);
+        }
+
+        public static void saturationSliderMoveAndSet(float newValue, string key, ref float slider, FrameworkElement devconf)
+        {
+            saturationSliderMove(1f - newValue, devconf);
+            MainWindow.devicesConfig.Write(key, (newValue).ToString(), inputDevice.Properties.ProductName);
+            slider = newValue;
         }
 
         private void eventZAxisSliderEnter(object sender, MouseEventArgs e)
@@ -1231,9 +1250,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRXAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRXAxisCurveSlider);
-            isDragging = true;
-            uiDeviceRXAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRXAxisCurveSlider);
+                isDragging = true;
+                uiDeviceRXAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRXAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation X Axis Curve", RXAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "RX_Axis_Curve", ref RXAxisCurve, uiDeviceRXAxisCurveSlider, uiDeviceRXAxisCurvePercent);
+                });
+            }
         }
 
         private void eventRXAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1277,9 +1307,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRYAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRYAxisCurveSlider);
-            isDragging = true;
-            uiDeviceRYAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRYAxisCurveSlider);
+                isDragging = true;
+                uiDeviceRYAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRYAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Y Axis Curve", RYAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "RY_Axis_Curve", ref RYAxisCurve, uiDeviceRYAxisCurveSlider, uiDeviceRYAxisCurvePercent);
+                });
+            }
         }
 
         private void eventRYAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1323,9 +1364,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRZAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRZAxisCurveSlider);
-            isDragging = true;
-            uiDeviceRZAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRZAxisCurveSlider);
+                isDragging = true;
+                uiDeviceRZAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRZAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Z Axis Curve", RZAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "RZ_Axis_Curve", ref RZAxisCurve, uiDeviceRZAxisCurveSlider, uiDeviceRZAxisCurvePercent);
+                });
+            }
         }
 
         private void eventRZAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1333,7 +1385,7 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceRZAxisCurveSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("RZ_Axis_Curve", RZAxisCurve.ToString(), inputDevice.Properties.ProductName);
-        
+
         }
 
         private void eventRZAxisSliderMove(object sender, MouseEventArgs e)
@@ -1370,9 +1422,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventSliderAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceSliderAxisCurveSlider);
-            isDragging = true;
-            uiDeviceSliderAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceSliderAxisCurveSlider);
+                isDragging = true;
+                uiDeviceSliderAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceSliderAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Slider Axis Curve", SliderAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "Slider_Axis_Curve", ref SliderAxisCurve, uiDeviceSliderAxisCurveSlider, uiDeviceSliderAxisCurvePercent);
+                });
+            }
         }
 
         private void eventSliderAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1417,9 +1480,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventDialAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount != 2)
+            {
             mouseStartPosition = e.GetPosition(uiDeviceDialAxisCurveSlider);
             isDragging = true;
             uiDeviceDialAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceDialAxisCurveSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Dial Axis Curve", DialAxisCurve, (float value) =>
+                {
+                    curveMoveAndSet(value, "Dial_Axis_Curve", ref DialAxisCurve, uiDeviceDialAxisCurveSlider, uiDeviceDialAxisCurvePercent);
+                });
+            }
         }
 
         private void eventDialAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1506,7 +1580,7 @@ namespace Star_Shitizen_Master_Mapping
 
         public float calculateRange(float axisvalue, float lowerDZ, float dz, float saturation)
         {
-            if (lowerDZ < 0.01f) 
+            if (lowerDZ < 0.01f)
             {
                 // Remaps [0,1] to [deadzone,1], with saturation applied
                 axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, dz, saturation, 0f, 1f), 0f), 1f);
@@ -1542,7 +1616,7 @@ namespace Star_Shitizen_Master_Mapping
         {
             if (!Dispatcher.CheckAccess())
             {
-                Dispatcher.Invoke(() => drawLineForAxisCurve(axiscurve,reset));
+                Dispatcher.Invoke(() => drawLineForAxisCurve(axiscurve, reset));
             }
             else
             {
@@ -1556,16 +1630,16 @@ namespace Star_Shitizen_Master_Mapping
                 float x;
                 float y;
 
-                for (float i = 0f; i <= 1f; i += 0.1f)
+                for (float i = 0f; i <= 1.001f; i += 0.1f)
                 {
                     x = i;
                     y = calculateQuadraticY(axiscurve, x);  // Use axiscurve in calculation
                     curveLineSeries.Add("dynamicCurve", x, y);
                 }
             }
-            
 
-            
+
+
         }
 
         private void eventZAxizDeadZoneSliderEnter(object sender, MouseEventArgs e)
@@ -1581,16 +1655,18 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventZAxizDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceZAxizDeadZoneSlider);
-            isDragging = true;
-            uiDeviceZAxizDeadZoneSlider.CaptureMouse();
-
-            if (e.ClickCount == 2)
+            if (e.ClickCount != 2)
             {
-                uiDeviceConfigValueWindow.Visibility = Visibility.Visible;
-                uiDeviceConfigValueWindow.updateValue((float value) =>
+                mouseStartPosition = e.GetPosition(uiDeviceZAxizDeadZoneSlider);
+                isDragging = true;
+                uiDeviceZAxizDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceZAxizDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Z Axis Deadzone", ZAxisDZ, (float value) =>
                 {
-                    ZAxisDZ = value;
+                    sliderMoveAndSet(value, "Z_Axis_DZ", ref ZAxisDZ, uiDeviceZAxizDeadZoneSlider);
                 });
             }
         }
@@ -1600,7 +1676,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceZAxizDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Z_Axis_DZ", ZAxisDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventZAxizDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -1619,7 +1694,7 @@ namespace Star_Shitizen_Master_Mapping
                 // Ensure slider value stays within 0.0 and 1.0
                 ZAxisDZ = Math.Max(0.0f, Math.Min(1.0f, ZAxisDZ));
 
-                
+
             }
         }
 
@@ -1636,9 +1711,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventZAxizDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceZAxizDZSaturationSlider);
-            isDragging = true;
-            uiDeviceZAxizDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceZAxizDZSaturationSlider);
+                isDragging = true;
+                uiDeviceZAxizDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceZAxizDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Z Axis Satuartion", ZAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "Z_Axis_Saturation", ref ZAxisSaturation, uiDeviceZAxizDZSaturationSlider);
+                });
+            }
         }
 
         private void eventZAxizDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1646,7 +1732,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceZAxizDZSaturationSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Z_Axis_Saturation", ZAxisSaturation.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventZAxizDZSatSliderMove(object sender, MouseEventArgs e)
@@ -1680,9 +1765,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventZAxizLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceZAxizLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceZAxizLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceZAxizLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceZAxizLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceZAxizLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Z Axis Lower Deadzone", ZAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "Z_Axis_LDZ", ref ZAxisLDZ, uiDeviceZAxizLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventZAxizLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1726,9 +1822,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRXAxizLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRXAxisLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRXAxisLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRXAxisLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRXAxisLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRXAxisLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation X Axis Lower Deadzone", RXAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RX_Axis_LDZ", ref RXAxisLDZ, uiDeviceRXAxisLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventRXAxizLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1771,9 +1878,21 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRXAxizDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRXAxisDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRXAxisDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRXAxisDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRXAxisDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRXAxisDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation X Axis Deadzone", RXAxisDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RX_Axis_DZ", ref RXAxisDZ, uiDeviceRXAxisDeadZoneSlider);
+                });
+            }
+
         }
 
         private void eventRXAxizDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1781,7 +1900,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceRXAxisDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("RX_Axis_DZ", RXAxisDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventRXAxizDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -1817,9 +1935,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRXAxizDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRXAxisDZSaturationSlider);
-            isDragging = true;
-            uiDeviceRXAxisDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRXAxisDZSaturationSlider);
+                isDragging = true;
+                uiDeviceRXAxisDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRXAxisDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation X Axis Saturation", RXAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "RX_Axis_Saturation", ref RXAxisSaturation, uiDeviceRXAxisDZSaturationSlider);
+                });
+            }
         }
 
         private void eventRXAxizDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1827,7 +1956,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceRXAxisDZSaturationSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("RX_Axis_Saturation", RXAxisSaturation.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventRXAxizDZSatSliderMove(object sender, MouseEventArgs e)
@@ -1861,17 +1989,27 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRYAxisLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRYAxisLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRYAxisLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRYAxisLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRYAxisLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRYAxisLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Y Axis Lower Deadzone", RYAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RY_Axis_LDZ", ref RYAxisLDZ, uiDeviceRYAxisLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventRYAxisLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
         {
             isDragging = false;
             uiDeviceRYAxisLowerDeadZoneSlider.ReleaseMouseCapture();
-            MainWindow.devicesConfig.Write("RY_Axis_LDZ", RXAxisLDZ.ToString(), inputDevice.Properties.ProductName);
-
+            MainWindow.devicesConfig.Write("RY_Axis_LDZ", RYAxisLDZ.ToString(), inputDevice.Properties.ProductName);
         }
 
         private void eventRYAxisLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -1907,9 +2045,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRYAxisDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRYAxisDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRYAxisDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRYAxisDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRYAxisDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRYAxisDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Y Axis Deadzone", RYAxisDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RY_Axis_DZ", ref RYAxisDZ, uiDeviceRYAxisDeadZoneSlider);
+                });
+            }
         }
 
         private void eventRYAxisDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -1954,9 +2103,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRYAxisDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRYAxisDZSaturationSlider);
-            isDragging = true;
-            uiDeviceRYAxisDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRYAxisDZSaturationSlider);
+                isDragging = true;
+                uiDeviceRYAxisDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRYAxisDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Y Axis Saturation", RYAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "RY_Axis_Saturation", ref RYAxisSaturation, uiDeviceRYAxisDZSaturationSlider);
+                });
+            }
         }
 
         private void eventRYAxisDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2002,9 +2162,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRZAxisLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRZAxisLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRZAxisLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRZAxisLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRZAxisLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRZAxisLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Z Axis Lower Deadzone", RZAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RZ_Axis_LDZ", ref RZAxisLDZ, uiDeviceRZAxisLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventRZAxisLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2012,7 +2183,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceRZAxisLowerDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("RZ_Axis_LDZ", RZAxisLDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventRZAxisLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2048,9 +2218,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRZAxisDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRZAxisDeadZoneSlider);
-            isDragging = true;
-            uiDeviceRZAxisDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRZAxisDeadZoneSlider);
+                isDragging = true;
+                uiDeviceRZAxisDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRZAxisDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Z Axis Deadzone", RZAxisDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "RZ_Axis_DZ", ref RZAxisDZ, uiDeviceRZAxisDeadZoneSlider);
+                });
+            }
         }
 
         private void eventRZAxisDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2058,7 +2239,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceRZAxisDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("RZ_Axis_DZ", RZAxisDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventRZAxisDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2095,17 +2275,27 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventRZAxisDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceRZAxisDZSaturationSlider);
-            isDragging = true;
-            uiDeviceRZAxisDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceRZAxisDZSaturationSlider);
+                isDragging = true;
+                uiDeviceRZAxisDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceRZAxisDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Rotation Z Axis Saturation", RZAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "RZ_Axis_Saturation", ref RZAxisSaturation, uiDeviceRZAxisDZSaturationSlider);
+                });
+            }
         }
 
         private void eventRZAxisDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
         {
             isDragging = false;
             uiDeviceRZAxisDZSaturationSlider.ReleaseMouseCapture();
-            MainWindow.devicesConfig.Write("RZ_Axis_Saturation", RYAxisSaturation.ToString(), inputDevice.Properties.ProductName);
-
+            MainWindow.devicesConfig.Write("RZ_Axis_Saturation", RZAxisSaturation.ToString(), inputDevice.Properties.ProductName);
         }
 
         private void eventRZAxisDZSatSliderMove(object sender, MouseEventArgs e)
@@ -2142,9 +2332,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventSliderLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceSliderLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceSliderLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceSliderLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceSliderLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceSliderLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Slider Axis Lower Deadzone", SliderAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "Slider_Axis_LDZ", ref SliderAxisLDZ, uiDeviceSliderLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventSliderLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2152,7 +2353,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceSliderLowerDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Slider_Axis_LDZ", SliderAxisLDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventSliderLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2188,9 +2388,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventSliderDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceSliderDeadZoneSlider);
-            isDragging = true;
-            uiDeviceSliderDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceSliderDeadZoneSlider);
+                isDragging = true;
+                uiDeviceSliderDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceSliderDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Slider Axis Deadzone", SliderAxisDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "Slider_Axis_DZ", ref SliderAxisDZ, uiDeviceSliderDeadZoneSlider);
+                });
+            }
         }
 
         private void eventSliderDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2198,7 +2409,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceSliderDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Slider_Axis_DZ", SliderAxisDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventSliderDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2234,9 +2444,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventSliderDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceSliderDZSaturationSlider);
-            isDragging = true;
-            uiDeviceSliderDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceSliderDZSaturationSlider);
+                isDragging = true;
+                uiDeviceSliderDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceSliderDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Slider Axis Deadzone Saturation", SliderAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "Slider_Axis_Saturation", ref SliderAxisSaturation, uiDeviceSliderDZSaturationSlider);
+                });
+            }
         }
 
         private void eventSliderDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2244,7 +2465,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceSliderDZSaturationSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Slider_Axis_Saturation", SliderAxisSaturation.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventSliderDZSatSliderMove(object sender, MouseEventArgs e)
@@ -2280,9 +2500,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventDialLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceDialLowerDeadZoneSlider);
-            isDragging = true;
-            uiDeviceDialLowerDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceDialLowerDeadZoneSlider);
+                isDragging = true;
+                uiDeviceDialLowerDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceDialLowerDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Dial Axis Lower Deadzone", DialAxisLDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "Dial_Axis_LDZ", ref DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
+                });
+            }
         }
 
         private void eventDialLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2290,7 +2521,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceDialLowerDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Dial_Axis_LDZ", DialAxisLDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventDialLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2326,9 +2556,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventDialDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceDialDeadZoneSlider);
-            isDragging = true;
-            uiDeviceDialDeadZoneSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceDialDeadZoneSlider);
+                isDragging = true;
+                uiDeviceDialDeadZoneSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceDialDeadZoneSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Dial Axis Deadzone", DialAxisDZ, (float value) =>
+                {
+                    sliderMoveAndSet(value, "Dial_Axis_DZ", ref DialAxisDZ, uiDeviceDialDeadZoneSlider);
+                });
+            }
         }
 
         private void eventDialDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2336,7 +2577,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceDialDeadZoneSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Dial_Axis_DZ", DialAxisDZ.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventDialDeadZoneSliderMove(object sender, MouseEventArgs e)
@@ -2372,9 +2612,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventDialDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceDialDZSaturationSlider);
-            isDragging = true;
-            uiDeviceDialDZSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceDialDZSaturationSlider);
+                isDragging = true;
+                uiDeviceDialDZSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceDialDZSaturationSlider.ReleaseMouseCapture();
+                getSetPreciseInput("Dial Axis Saturation", DialAxisSaturation, (float value) =>
+                {
+                    saturationSliderMoveAndSet(value, "Dial_Axis_Saturation", ref DialAxisSaturation, uiDeviceDialDZSaturationSlider);
+                });
+            }
         }
 
         private void eventDialDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -2382,7 +2633,6 @@ namespace Star_Shitizen_Master_Mapping
             isDragging = false;
             uiDeviceDialDZSaturationSlider.ReleaseMouseCapture();
             MainWindow.devicesConfig.Write("Dial_Axis_Saturation", DialAxisSaturation.ToString(), inputDevice.Properties.ProductName);
-
         }
 
         private void eventDialDZSatSliderMove(object sender, MouseEventArgs e)
@@ -2512,14 +2762,14 @@ namespace Star_Shitizen_Master_Mapping
                 MainWindow.devicesConfig.Write("Dial_Axis_Mode", "0", inputDevice.Properties.ProductName);
                 uiDeviceDialLowerDeadZoneSlider.Visibility = Visibility.Hidden;
                 sliderMoveAndSet(0f, "Dial_Axis_LDZ", ref DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
-                sliderMoveAndSet(0f, "Dial_Axis_DZ", ref  DialAxisDZ,  uiDeviceDialDeadZoneSlider);
+                sliderMoveAndSet(0f, "Dial_Axis_DZ", ref DialAxisDZ, uiDeviceDialDeadZoneSlider);
             }
             else if (DialAxisMode == 0)
             {
                 DialAxisMode = 1;
                 MainWindow.devicesConfig.Write("Dial_Axis_Mode", "1", inputDevice.Properties.ProductName);
                 uiDeviceDialLowerDeadZoneSlider.Visibility = Visibility.Visible;
-                sliderMoveAndSet(0.515f, "Dial_Axis_DZ", ref  DialAxisDZ,  uiDeviceDialDeadZoneSlider);
+                sliderMoveAndSet(0.515f, "Dial_Axis_DZ", ref DialAxisDZ, uiDeviceDialDeadZoneSlider);
                 sliderMoveAndSet(0.485f, "Dial_Axis_LDZ", ref DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
             }
         }

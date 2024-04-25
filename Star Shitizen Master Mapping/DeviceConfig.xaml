@@ -121,7 +121,7 @@
             </ScrollViewer>
         </Grid>
         <local:XYCurves x:Name="uiXYCurveWindow" Margin="0,304,-9,0" HorizontalAlignment="Right" Width="800" Height="220" VerticalAlignment="Top" d:IsHidden="True"/>
-        <local:inputWindow x:Name="uiDeviceConfigValueWindow" HorizontalAlignment="Center" Height="450" Margin="0,419,0,0" VerticalAlignment="Top" Width="800" Grid.RowSpan="2"/>
+        <local:inputWindow x:Name="uiDeviceConfigValueWindow" HorizontalAlignment="Center" Height="450" Margin="0,419,0,0" VerticalAlignment="Top" Width="800" Grid.RowSpan="2" Visibility="Hidden"/>
 
     </Grid>
 </UserControl>
