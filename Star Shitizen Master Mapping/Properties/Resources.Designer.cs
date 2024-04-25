@@ -59,15 +59,5 @@ namespace Star_Shitizen_Master_Mapping.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] bg_media {
-            get {
-                object obj = ResourceManager.GetObject("bg_media", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

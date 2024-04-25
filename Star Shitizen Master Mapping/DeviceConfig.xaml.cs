@@ -78,28 +78,28 @@ namespace Star_Shitizen_Master_Mapping
         public static float DialAxisCurve = 0f;
         public static float XAxisDZ = 0f;
         public static float XAxisLDZ = 0f;
-        public static float XAxisSaturation = 0f;
+        public static float XAxisSaturation = 1f;
         public static float YAxisDZ = 0f;
         public static float YAxisLDZ = 0f;
-        public static float YAxisSaturation = 0f;
+        public static float YAxisSaturation = 1f;
         public static float ZAxisDZ = 0f;
         public static float ZAxisLDZ = 0f;
-        public static float ZAxisSaturation = 0f;
+        public static float ZAxisSaturation = 1f;
         public static float RXAxisDZ = 0f;
         public static float RXAxisLDZ = 0f;
-        public static float RXAxisSaturation = 0f;
+        public static float RXAxisSaturation = 1f;
         public static float RYAxisDZ = 0f;
         public static float RYAxisLDZ = 0f;
-        public static float RYAxisSaturation = 0f;
+        public static float RYAxisSaturation = 1f;
         public static float RZAxisDZ = 0f;
         public static float RZAxisLDZ = 0f;
-        public static float RZAxisSaturation = 0f;
+        public static float RZAxisSaturation = 1f;
         public static float SliderAxisDZ = 0f;
         public static float SliderAxisLDZ = 0f;
-        public static float SliderAxisSaturation = 0f;
+        public static float SliderAxisSaturation = 1f;
         public static float DialAxisDZ = 0f;
         public static float DialAxisLDZ = 0f;
-        public static float DialAxisSaturation = 0f;
+        public static float DialAxisSaturation = 1f;
 
         public bool curveEditor = false;
 
@@ -349,18 +349,43 @@ namespace Star_Shitizen_Master_Mapping
             getSetInvert(ref RZAxisInvert, "RZ_Axis_Invert");
             getSetInvert(ref SliderInvert, "Slider_Axis_Invert");
             getSetInvert(ref DialInvert, "D_Axis_Invert");
+
             getSetFloat(ref ZAxisCurve, "Z_Axis_Curve");
             getSetFloat(ref RXAxisCurve, "RX_Axis_Curve");
             getSetFloat(ref RYAxisCurve, "RY_Axis_Curve");
             getSetFloat(ref RZAxisCurve, "RZ_Axis_Curve");
             getSetFloat(ref SliderAxisCurve, "Slider_Axis_Curve");
             getSetFloat(ref DialAxisCurve, "Dial_Axis_Curve");
+
             getSetFloat(ref ZAxisDZ, "Z_Axis_DZ");
             getSetFloat(ref ZAxisLDZ, "Z_Axis_LDZ");
             getSetFloat(ref ZAxisSaturation, "Z_Axis_Saturation");
+
+
+
             getSetFloat(ref RXAxisDZ, "RX_Axis_DZ");
             getSetFloat(ref RXAxisLDZ, "RX_Axis_LDZ");
             getSetFloat(ref RXAxisSaturation, "RX_Axis_Saturation");
+
+
+            getSetFloat(ref RYAxisDZ, "RY_Axis_DZ");
+            getSetFloat(ref RYAxisLDZ, "RY_Axis_LDZ");
+            getSetFloat(ref RYAxisSaturation, "RY_Axis_Saturation");
+
+
+            getSetFloat(ref RZAxisDZ, "RZ_Axis_DZ");
+            getSetFloat(ref RZAxisLDZ, "RZ_Axis_LDZ");
+            getSetFloat(ref RZAxisSaturation, "RZ_Axis_Saturation");
+
+
+            getSetFloat(ref SliderAxisDZ, "Slider_Axis_DZ");
+            getSetFloat(ref SliderAxisLDZ, "Slider_Axis_LDZ");
+            getSetFloat(ref SliderAxisSaturation, "Slider_Axis_Saturation");
+
+
+            getSetFloat(ref DialAxisDZ, "Dial_Axis_DZ");
+            getSetFloat(ref DialAxisLDZ, "Dial_Axis_LDZ");
+            getSetFloat(ref DialAxisSaturation, "Dial_Axis_Saturation");
 
 
             sliderMove(ZAxisCurve, uiDeviceZAxisCurveSlider);
@@ -372,15 +397,27 @@ namespace Star_Shitizen_Master_Mapping
 
             deadZoneSliderMove(ZAxisDZ, uiDeviceZAxizDeadZoneSlider);
             deadZoneSliderMove(ZAxisLDZ, uiDeviceZAxizLowerDeadZoneSlider);
-            saturationSliderMove(ZAxisSaturation, uiDeviceZAxizDZSaturationSlider);
+            saturationSliderMove(1f - ZAxisSaturation, uiDeviceZAxizDZSaturationSlider);
 
             deadZoneSliderMove(RXAxisDZ, uiDeviceRXAxisDeadZoneSlider);
-            deadZoneSliderMove(RXAxisLDZ, uiDeviceRXAxisDeadZoneSlider);
-            saturationSliderMove(RXAxisSaturation, uiDeviceRXAxisDeadZoneSlider);
+            deadZoneSliderMove(RXAxisLDZ, uiDeviceRXAxisLowerDeadZoneSlider);
+            saturationSliderMove(1f - RXAxisSaturation, uiDeviceRXAxisDZSaturationSlider);
 
             deadZoneSliderMove(RYAxisDZ, uiDeviceRYAxisDeadZoneSlider);
-            deadZoneSliderMove(RYAxisLDZ, uiDeviceRYAxisDeadZoneSlider);
-            saturationSliderMove(RYAxisSaturation, uiDeviceRYAxisDeadZoneSlider);
+            deadZoneSliderMove(RYAxisLDZ, uiDeviceRYAxisLowerDeadZoneSlider);
+            saturationSliderMove(1f - RYAxisSaturation, uiDeviceRYAxisDZSaturationSlider);
+
+            deadZoneSliderMove(RZAxisDZ, uiDeviceRZAxisDeadZoneSlider);
+            deadZoneSliderMove(RZAxisLDZ, uiDeviceRZAxisLowerDeadZoneSlider);
+            saturationSliderMove(1f - RZAxisSaturation, uiDeviceRZAxisDZSaturationSlider);
+
+            deadZoneSliderMove(SliderAxisDZ, uiDeviceSliderDeadZoneSlider);
+            deadZoneSliderMove(SliderAxisLDZ, uiDeviceSliderLowerDeadZoneSlider);
+            saturationSliderMove(1f - SliderAxisSaturation, uiDeviceSliderDZSaturationSlider);
+
+            deadZoneSliderMove(DialAxisDZ, uiDeviceSliderDeadZoneSlider);
+            deadZoneSliderMove(DialAxisLDZ, uiDeviceDialLowerDeadZoneSlider);
+            saturationSliderMove(1f - DialAxisSaturation, uiDeviceDialDZSaturationSlider);
 
 
             uiDeviceZAxisCurvePercent.Content = ConvertToPercentageString(ZAxisCurve);         
@@ -490,7 +527,9 @@ namespace Star_Shitizen_Master_Mapping
 
         private void ZAxis(float zAxis)
         {
-            var curvedAxis = calculateQuadraticY(ZAxisCurve,zAxis);
+            var rangedAxis = calculateRange(zAxis, ZAxisLDZ, ZAxisDZ, ZAxisSaturation);
+            var curvedAxis = calculateQuadraticY(rangedAxis,zAxis);
+            
             SetUiWidth(uiDeviceZAxisFreGrnd, (double)(GetUiWidth(uiDeviceZAxisBckGrnd) * curvedAxis));
         }
 
@@ -995,9 +1034,6 @@ namespace Star_Shitizen_Master_Mapping
             devconf.Margin = new Thickness(0, 0, newPos, 0);
         }
 
-
-
-
         private void eventZAxisSliderEnter(object sender, MouseEventArgs e)
         {
             uiDeviceZAxisCurveSlider.Fill = HoverColor;
@@ -1297,11 +1333,50 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
+        private static float Remap(float value, float oldLower, float oldHigher, float newLower, float newHigher)
+        {
+            return newLower + (value - oldLower) * (newHigher - newLower) / (oldHigher - oldLower);
+        }
+
         public float calculateQuadraticY(float axiscurve, float x)
         {
 
             return MathF.Pow(x, 1.0f + axiscurve * 2f);
         }
+
+        public float calculateRange(float axisvalue, float lowerDZ, float dz, float saturation)
+        {
+            if (lowerDZ < 0.01f) 
+            {
+                // Remaps [0,1] to [deadzone,1], with saturation applied
+                axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, dz, saturation, 0f, 1f), 0f), 1f);
+            }
+            else // Lower deadzone is on
+            {
+                float midPoint = lowerDZ + ((dz - lowerDZ) / 2);
+                if (axisvalue > dz) // If value is greater than deadzone
+                {
+                    // Remap [deadzone,saturation] to [0,1] and clamp
+                    axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, dz, saturation, 0f, 1f), 0f), 1f);
+                    // Remap [0,1] to [midpoint, saturation] and clamp
+                    axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, 0f, 1f, midPoint, saturation), 0f), 1f);
+                }
+                else if (axisvalue < lowerDZ) // If value is less than deadzone
+                {
+                    // Remap [1 - saturation,lowerDZ] to [0,1] and clamp
+                    axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, 1f - saturation, lowerDZ, 0f, 1f), 0f), 1f);
+                    // Remap [0,1] to [saturation, midpoint] and clamp
+                    axisvalue = MathF.Min(MathF.Max(Remap(axisvalue, 0f, 1f, 1f - saturation, midPoint), 0f), 1f);
+                }
+                else // Between lower deadzone and deadzone, then use midpoint (roughly 0.5)
+                {
+                    axisvalue = midPoint;
+                }
+            }
+            return axisvalue;
+        }
+
+
 
         public void drawLineForAxisCurve(float axiscurve, bool reset)
         {
@@ -1419,7 +1494,7 @@ namespace Star_Shitizen_Master_Mapping
                 ZAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
 
                 // Ensure slider value stays within 0.0 and 1.0
-                ZAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, ZAxisSaturation));
+                ZAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - ZAxisSaturation));
             }
         }
 
@@ -1600,7 +1675,7 @@ namespace Star_Shitizen_Master_Mapping
                 RXAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
 
                 // Ensure slider value stays within 0.0 and 1.0
-                RXAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, RXAxisSaturation));
+                RXAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - RXAxisSaturation));
             }
         }
 
@@ -1737,7 +1812,427 @@ namespace Star_Shitizen_Master_Mapping
                 RYAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
 
                 // Ensure slider value stays within 0.0 and 1.0
-                RYAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, RYAxisSaturation));
+                RYAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - RYAxisSaturation));
+            }
+        }
+
+
+        // RZ 
+
+
+        private void eventRZAxisLowerDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceRZAxisLowerDeadZoneSlider.ToolTip = lowerDeadZoneTT;
+            lowerDeadZoneTT.IsOpen = true;
+        }
+
+        private void eventRZAxisLowerDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            lowerDeadZoneTT.IsOpen = false;
+        }
+
+        private void eventRZAxisLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceRZAxisLowerDeadZoneSlider);
+            isDragging = true;
+            uiDeviceRZAxisLowerDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventRZAxisLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceRZAxisLowerDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("RZ_Axis_LDZ", RZAxisLDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventRZAxisLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceRZAxisLowerDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceRZAxisLowerDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceRZAxisLowerDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                RZAxisLDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                RZAxisLDZ = Math.Max(0.0f, Math.Min(1.0f, RZAxisLDZ));
+
+
+            }
+        }
+
+        private void eventRZAxisDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceRZAxisDeadZoneSlider.ToolTip = deadZoneTT;
+            deadZoneTT.IsOpen = true;
+        }
+
+        private void eventRZAxisDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            deadZoneTT.IsOpen = false;
+        }
+
+        private void eventRZAxisDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceRZAxisDeadZoneSlider);
+            isDragging = true;
+            uiDeviceRZAxisDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventRZAxisDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceRZAxisDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("RZ_Axis_DZ", RZAxisDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventRZAxisDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceRZAxisDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceRZAxisDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceRZAxisDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                RZAxisDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                RZAxisDZ = Math.Max(0.0f, Math.Min(1.0f, RZAxisDZ));
+
+
+            }
+        }
+
+
+        private void eventRZAxisDZSatSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceRZAxisDZSaturationSlider.ToolTip = saturationTT;
+            saturationTT.IsOpen = true;
+        }
+
+        private void eventRZAxisDZSatSliderLeave(object sender, MouseEventArgs e)
+        {
+            saturationTT.IsOpen = false;
+        }
+
+        private void eventRZAxisDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceRZAxisDZSaturationSlider);
+            isDragging = true;
+            uiDeviceRZAxisDZSaturationSlider.CaptureMouse();
+        }
+
+        private void eventRZAxisDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceRZAxisDZSaturationSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("RZ_Axis_Saturation", RYAxisSaturation.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventRZAxisDZSatSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceRZAxisDZSaturationSlider);
+                double deltaX = mouseStartPosition.X - currentPosition.X; // Change in X position
+
+                double newX = Math.Min(Math.Max(uiDeviceRZAxisDZSaturationSlider.Margin.Right + deltaX, MinDZSaturationSliderMargin.Right), MaxDZSaturationSliderMargin.Right);
+                uiDeviceRZAxisDZSaturationSlider.Margin = new Thickness(0, 0, newX, 0);
+
+                // Calculate normalized value (1 at full right, 0 at full left)
+                RZAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                RZAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - RZAxisSaturation));
+            }
+        }
+
+
+        // Slider
+
+        private void eventSliderLowerDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceSliderLowerDeadZoneSlider.ToolTip = lowerDeadZoneTT;
+            lowerDeadZoneTT.IsOpen = true;
+        }
+
+        private void eventSliderLowerDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            lowerDeadZoneTT.IsOpen = false;
+        }
+
+        private void eventSliderLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceSliderLowerDeadZoneSlider);
+            isDragging = true;
+            uiDeviceSliderLowerDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventSliderLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceSliderLowerDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Slider_Axis_LDZ", SliderAxisLDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventSliderLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceSliderLowerDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceSliderLowerDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceSliderLowerDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                SliderAxisLDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                SliderAxisLDZ = Math.Max(0.0f, Math.Min(1.0f, SliderAxisLDZ));
+
+
+            }
+        }
+
+        private void eventSliderDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceSliderDeadZoneSlider.ToolTip = deadZoneTT;
+            deadZoneTT.IsOpen = true;
+        }
+
+        private void eventSliderDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            deadZoneTT.IsOpen = false;
+        }
+
+        private void eventSliderDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceSliderDeadZoneSlider);
+            isDragging = true;
+            uiDeviceSliderDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventSliderDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceSliderDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Slider_Axis_DZ", SliderAxisDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventSliderDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceSliderDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceSliderDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceSliderDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                SliderAxisDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                SliderAxisDZ = Math.Max(0.0f, Math.Min(1.0f, SliderAxisDZ));
+
+
+            }
+        }
+
+
+        private void eventSliderDZSatSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceSliderDZSaturationSlider.ToolTip = saturationTT;
+            saturationTT.IsOpen = true;
+        }
+
+        private void eventSliderDZSatSliderLeave(object sender, MouseEventArgs e)
+        {
+            saturationTT.IsOpen = false;
+        }
+
+        private void eventSliderDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceSliderDZSaturationSlider);
+            isDragging = true;
+            uiDeviceSliderDZSaturationSlider.CaptureMouse();
+        }
+
+        private void eventSliderDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceSliderDZSaturationSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Slider_Axis_Saturation", SliderAxisSaturation.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventSliderDZSatSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceSliderDZSaturationSlider);
+                double deltaX = mouseStartPosition.X - currentPosition.X; // Change in X position
+
+                double newX = Math.Min(Math.Max(uiDeviceSliderDZSaturationSlider.Margin.Right + deltaX, MinDZSaturationSliderMargin.Right), MaxDZSaturationSliderMargin.Right);
+                uiDeviceSliderDZSaturationSlider.Margin = new Thickness(0, 0, newX, 0);
+
+                // Calculate normalized value (1 at full right, 0 at full left)
+                SliderAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                SliderAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - SliderAxisSaturation));
+            }
+        }
+
+        // Dial
+
+        private void eventDialLowerDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceDialLowerDeadZoneSlider.ToolTip = lowerDeadZoneTT;
+            lowerDeadZoneTT.IsOpen = true;
+        }
+
+        private void eventDialLowerDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            lowerDeadZoneTT.IsOpen = false;
+        }
+
+        private void eventDialLowerDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceDialLowerDeadZoneSlider);
+            isDragging = true;
+            uiDeviceDialLowerDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventDialLowerDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceDialLowerDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Dial_Axis_LDZ", DialAxisLDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventDialLowerDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceDialLowerDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceDialLowerDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceDialLowerDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                DialAxisLDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DialAxisLDZ = Math.Max(0.0f, Math.Min(1.0f, DialAxisLDZ));
+
+
+            }
+        }
+
+        private void eventDialDeadZoneSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceDialDeadZoneSlider.ToolTip = deadZoneTT;
+            deadZoneTT.IsOpen = true;
+        }
+
+        private void eventDialDeadZoneSliderLeave(object sender, MouseEventArgs e)
+        {
+            deadZoneTT.IsOpen = false;
+        }
+
+        private void eventDialDeadZoneSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceDialDeadZoneSlider);
+            isDragging = true;
+            uiDeviceDialDeadZoneSlider.CaptureMouse();
+        }
+
+        private void eventDialDeadZoneSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceDialDeadZoneSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Dial_Axis_DZ", DialAxisDZ.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventDialDeadZoneSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceDialDeadZoneSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceDialDeadZoneSlider.Margin.Left + deltaX, MinDeadZoneSliderMargin.Left), MaxDeadZoneSliderMargin.Left);
+                uiDeviceDialDeadZoneSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                DialAxisDZ = (float)((newX - MinDeadZoneSliderMargin.Left) / (MaxDeadZoneSliderMargin.Left - MinDeadZoneSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DialAxisDZ = Math.Max(0.0f, Math.Min(1.0f, DialAxisDZ));
+
+
+            }
+        }
+
+
+        private void eventDialDZSatSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceDialDZSaturationSlider.ToolTip = saturationTT;
+            saturationTT.IsOpen = true;
+        }
+
+        private void eventDialDZSatSliderLeave(object sender, MouseEventArgs e)
+        {
+            saturationTT.IsOpen = false;
+        }
+
+        private void eventDialDZSatSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceDialDZSaturationSlider);
+            isDragging = true;
+            uiDeviceDialDZSaturationSlider.CaptureMouse();
+        }
+
+        private void eventDialDZSatSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceDialDZSaturationSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Dial_Axis_Saturation", DialAxisSaturation.ToString(), inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventDialDZSatSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceDialDZSaturationSlider);
+                double deltaX = mouseStartPosition.X - currentPosition.X; // Change in X position
+
+                double newX = Math.Min(Math.Max(uiDeviceDialDZSaturationSlider.Margin.Right + deltaX, MinDZSaturationSliderMargin.Right), MaxDZSaturationSliderMargin.Right);
+                uiDeviceDialDZSaturationSlider.Margin = new Thickness(0, 0, newX, 0);
+
+                // Calculate normalized value (1 at full right, 0 at full left)
+                DialAxisSaturation = (float)((newX - MinDZSaturationSliderMargin.Right) / (MaxDZSaturationSliderMargin.Right - MinDZSaturationSliderMargin.Right));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DialAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - DialAxisSaturation));
             }
         }
     }

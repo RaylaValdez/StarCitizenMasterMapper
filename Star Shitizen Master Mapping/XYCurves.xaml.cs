@@ -37,6 +37,8 @@ namespace Star_Shitizen_Master_Mapping
 
         public Thickness MinSliderMargin = new Thickness();
         public Thickness MaxSliderMargin = new Thickness();
+        public Thickness MinSatSliderMargin = new Thickness();
+        public Thickness MaxSatSliderMargin = new Thickness();
 
         private Point mouseStartPosition;
         private bool isDragging = false;
@@ -58,6 +60,8 @@ namespace Star_Shitizen_Master_Mapping
 
             MinSliderMargin = new Thickness(10, 0, 0, 0);
             MaxSliderMargin = new Thickness(277, 0, 0, 0);
+            MinSatSliderMargin = new Thickness(0, 0, 10, 0);
+            MaxSatSliderMargin = new Thickness(0, 0, 277, 0);
         }
 
         public void Update(dynamicDevices device)
@@ -65,9 +69,35 @@ namespace Star_Shitizen_Master_Mapping
             DeviceConfig.getSetFloat(ref DeviceConfig.XAxisCurve, "X_Axis_Curve");
             DeviceConfig.sliderMove(DeviceConfig.XAxisCurve, uiDeviceXAxisCurveSlider);
             uiDeviceXAxisCurvePercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.XAxisCurve);
+
+            DeviceConfig.getSetFloat(ref DeviceConfig.XAxisDZ, "X_Axis_DZ");
+            DeviceConfig.sliderMove(DeviceConfig.XAxisDZ, uiDeviceXAxisDZSlider);
+            uiDeviceXAxisDZPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.XAxisDZ);
+
+            DeviceConfig.getSetFloat(ref DeviceConfig.XAxisSaturation, "X_Axis_Saturation");
+            saturationSliderMove(1f - DeviceConfig.XAxisSaturation, uiDeviceXAxisSaturationSlider);
+            uiDeviceXAxisSatPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.XAxisSaturation);
+
             DeviceConfig.getSetFloat(ref DeviceConfig.YAxisCurve, "Y_Axis_Curve");
             DeviceConfig.sliderMove(DeviceConfig.YAxisCurve, uiDeviceYAxisCurveSlider);
             uiDeviceYAxisCurvePercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisCurve);
+
+            DeviceConfig.getSetFloat(ref DeviceConfig.XAxisDZ, "Y_Axis_DZ");
+            DeviceConfig.sliderMove(DeviceConfig.YAxisDZ, uiDeviceYAxisDZSlider);
+            uiDeviceYAxisDZPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisDZ);
+
+            DeviceConfig.getSetFloat(ref DeviceConfig.YAxisSaturation, "Y_Axis_Saturation");
+            saturationSliderMove(1f - DeviceConfig.YAxisSaturation, uiDeviceYAxisSaturationSlider);
+            uiDeviceYAxisSatPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisSaturation);
+        }
+
+        private void saturationSliderMove(float axiscurve, FrameworkElement devconf)
+        {
+            double newPos = MinSatSliderMargin.Right + (axiscurve * (MaxSatSliderMargin.Right - MinSatSliderMargin.Right));
+
+            newPos = Math.Max(MinSatSliderMargin.Right, Math.Min(MaxSatSliderMargin.Right, newPos));
+
+            devconf.Margin = new Thickness(0, 0, newPos, 0);
         }
 
         private void uiDeviceXYCloseFontEnter(object sender, MouseEventArgs e)
@@ -186,6 +216,197 @@ namespace Star_Shitizen_Master_Mapping
                 uiDeviceYAxisCurvePercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisCurve);
                 DeviceConfig.Instance.drawLineForAxisCurve(DeviceConfig.YAxisCurve, true);
                 DeviceConfig.Instance.drawLineForAxisCurve(DeviceConfig.YAxisCurve, false);
+            }
+        }
+
+        private void eventXAxisDZSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceXAxisDZSlider.Fill = HoverColor;
+            uiDeviceXAxisDZSlider.Stroke = HoverColorStroke;
+        }
+
+        private void eventXAxisDZSliderLeave(object sender, MouseEventArgs e)
+        {
+            uiDeviceXAxisDZSlider.Fill = TglOn;
+            uiDeviceXAxisDZSlider.Stroke = TglOn;
+        }
+
+        private void eventXAxisDZSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceXAxisDZSlider);
+            isDragging = true;
+            uiDeviceXAxisDZSlider.CaptureMouse();
+        }
+
+        private void eventXAxisDZSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceXAxisDZSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("X_Axis_DZ", DeviceConfig.XAxisDZ.ToString(), DeviceConfig.inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventXAxisDZSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceXAxisDZSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceXAxisDZSlider.Margin.Left + deltaX, MinSliderMargin.Left), MaxSliderMargin.Left);
+                uiDeviceXAxisDZSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                DeviceConfig.XAxisDZ = (float)((newX - MinSliderMargin.Left) / (MaxSliderMargin.Left - MinSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DeviceConfig.XAxisDZ = Math.Max(0.0f, Math.Min(1.0f, DeviceConfig.XAxisDZ));
+
+                uiDeviceXAxisDZPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.XAxisDZ);
+            }
+        }
+
+        private void eventXAxisSatSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceXAxisSaturationSlider.Fill = HoverColor;
+            uiDeviceXAxisSaturationSlider.Stroke = HoverColorStroke;
+        }
+
+        private void eventXAxisSatSliderLeave(object sender, MouseEventArgs e)
+        {
+            uiDeviceXAxisSaturationSlider.Fill = TglOn;
+            uiDeviceXAxisSaturationSlider.Stroke = TglOn;
+        }
+
+        private void eventXAxisSatSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceXAxisSaturationSlider);
+            isDragging = true;
+            uiDeviceXAxisSaturationSlider.CaptureMouse();
+        }
+
+        private void eventXAxisSatSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceXAxisSaturationSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("X_Axis_Saturation", DeviceConfig.XAxisSaturation.ToString(), DeviceConfig.inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventXAxisSatSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceXAxisSaturationSlider);
+                double deltaX = mouseStartPosition.X - currentPosition.X; // Change in X position
+
+                double newX = Math.Min(Math.Max(uiDeviceXAxisSaturationSlider.Margin.Right + deltaX, MinSatSliderMargin.Right), MaxSatSliderMargin.Right);
+                uiDeviceXAxisSaturationSlider.Margin = new Thickness(0, 0, newX, 0);
+
+                // Calculate normalized value (1 at full right, 0 at full left)
+                DeviceConfig.XAxisSaturation = (float)((newX - MinSatSliderMargin.Right) / (MaxSatSliderMargin.Right - MinSatSliderMargin.Right));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DeviceConfig.XAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - DeviceConfig.XAxisSaturation));
+
+                uiDeviceXAxisSatPercent.Content =   DeviceConfig.ConvertToPercentageString(DeviceConfig.XAxisSaturation);
+            }
+        }
+
+        
+        // Y Axis DZ and Sat
+
+        private void eventYAxisDZSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceYAxisDZSlider.Fill = HoverColor;
+            uiDeviceYAxisDZSlider.Stroke = HoverColorStroke;
+        }
+
+        private void eventYAxisDZSliderLeave(object sender, MouseEventArgs e)
+        {
+            uiDeviceYAxisDZSlider.Fill = TglOn;
+            uiDeviceYAxisDZSlider.Stroke = TglOn;
+        }
+
+        private void eventYAxisDZSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceYAxisDZSlider);
+            isDragging = true;
+            uiDeviceYAxisDZSlider.CaptureMouse();
+        }
+
+        private void eventYAxisDZSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceYAxisDZSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Y_Axis_DZ", DeviceConfig.YAxisDZ.ToString(), DeviceConfig.inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventYAxisDZSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceYAxisDZSlider);
+                double deltaX = currentPosition.X - mouseStartPosition.X;
+
+                double newX = Math.Min(Math.Max(uiDeviceYAxisDZSlider.Margin.Left + deltaX, MinSliderMargin.Left), MaxSliderMargin.Left);
+                uiDeviceYAxisDZSlider.Margin = new Thickness(newX, 0, 0, 0);
+
+                // Calculate normalized value
+                DeviceConfig.YAxisDZ = (float)((newX - MinSliderMargin.Left) / (MaxSliderMargin.Left - MinSliderMargin.Left));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DeviceConfig.YAxisDZ = Math.Max(0.0f, Math.Min(1.0f, DeviceConfig.YAxisDZ));
+
+                uiDeviceYAxisDZPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisDZ);
+            }
+        }
+
+        private void eventYAxisSatSliderEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceYAxisSaturationSlider.Fill = HoverColor;
+            uiDeviceYAxisSaturationSlider.Stroke = HoverColorStroke;
+        }
+
+        private void eventYAxisSatSliderLeave(object sender, MouseEventArgs e)
+        {
+            uiDeviceYAxisSaturationSlider.Fill = TglOn;
+            uiDeviceYAxisSaturationSlider.Stroke = TglOn;
+        }
+
+        private void eventYAxisSatSliderClickDown(object sender, MouseButtonEventArgs e)
+        {
+            mouseStartPosition = e.GetPosition(uiDeviceYAxisSaturationSlider);
+            isDragging = true;
+            uiDeviceYAxisSaturationSlider.CaptureMouse();
+        }
+
+        private void eventYAxisSatSliderClickUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            uiDeviceYAxisSaturationSlider.ReleaseMouseCapture();
+            MainWindow.devicesConfig.Write("Y_Axis_Saturation", DeviceConfig.YAxisSaturation.ToString(), DeviceConfig.inputDevice.Properties.ProductName);
+
+        }
+
+        private void eventYAxisSatSliderMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                Point currentPosition = e.GetPosition(uiDeviceYAxisSaturationSlider);
+                double deltaX = mouseStartPosition.X - currentPosition.X; // Change in X position
+
+                double newX = Math.Min(Math.Max(uiDeviceYAxisSaturationSlider.Margin.Right + deltaX, MinSatSliderMargin.Right), MaxSatSliderMargin.Right);
+                uiDeviceYAxisSaturationSlider.Margin = new Thickness(0, 0, newX, 0);
+
+                // Calculate normalized value (1 at full right, 0 at full left)
+                DeviceConfig.YAxisSaturation = (float)((newX - MinSatSliderMargin.Right) / (MaxSatSliderMargin.Right - MinSatSliderMargin.Right));
+
+                // Ensure slider value stays within 0.0 and 1.0
+                DeviceConfig.YAxisSaturation = Math.Max(0.0f, Math.Min(1.0f, 1f - DeviceConfig.YAxisSaturation));
+
+                uiDeviceYAxisSatPercent.Content = DeviceConfig.ConvertToPercentageString(DeviceConfig.YAxisSaturation);
             }
         }
     }

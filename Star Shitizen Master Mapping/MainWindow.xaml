@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
         x:Name="SCMM_MainWindow" x:Class="Star_Shitizen_Master_Mapping.MainWindow"
         mc:Ignorable="d"
-        Title="Star Shitizen Master Mapper" Background="#FFFBFBFB" WindowState="Maximized" Width="1920" Height="1080" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" WindowStyle="None" Closing="mainWindowClosing">
+        Title="Star Shitizen Master Mapper" Background="#FFFBFBFB" Width="1920" Height="1080" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" WindowStyle="None" Closing="mainWindowClosing">
     <Window.Resources>
 
     </Window.Resources>
