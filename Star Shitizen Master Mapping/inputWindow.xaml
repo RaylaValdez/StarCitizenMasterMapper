@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Star_Shitizen_Master_Mapping.inputWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,0,0,225">
+        <Rectangle Stroke="#FF3A7187" RadiusX="56.5" RadiusY="56.5" Fill="#FF0A1D29"/>
+        <Label x:Name="uiDeviceConfigValueWindowLabel" Content="Precise Input&#xD;&#xA;" Height="59" Margin="22,13,224,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold"/>
+        <Rectangle Stroke="#FF3A7187" RadiusX="15.5" RadiusY="15.5" Fill="#FF0A1D29" Margin="202,0,0,0" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Width="194"/>
+        <TextBox x:Name="uiDeviceConfigValueTextBox" TextWrapping="Wrap" Text="TextBox" Margin="218,0,0,0" FontFamily="Jura" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Center" Background="#FF0A1D29" Foreground="#FF377DB1" BorderBrush="#FF3A7187" Padding="0,5,0,0" HorizontalAlignment="Left" Width="162" Height="40" VerticalAlignment="Center"/>
+        <Rectangle x:Name="uiDeviceConfigValueSaveButtonBox" Stroke="#FF3A7187" RadiusX="15.5" RadiusY="15.5" Fill="#FF0A1D29" Margin="577,0,0,0" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Width="96"/>
+        <Label x:Name="uiDeviceConfigValueSaveButton" Content="Save" HorizontalAlignment="Left" Height="40" Margin="577,0,0,0" VerticalAlignment="Center" Width="96" FontFamily="Jura" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF377DB1"/>
+
+    </Grid>
+</UserControl>

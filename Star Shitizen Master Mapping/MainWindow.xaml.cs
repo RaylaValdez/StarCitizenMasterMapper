@@ -67,51 +67,58 @@ namespace Star_Shitizen_Master_Mapping
                         devicesConfig.WriteText("");
                         if (devicesConfig.KeyExists("Physical_ID", deviceInstance.ProductName))
                         {
+                            devicesConfig.Write("X_Axis_Mode", "0", deviceInstance.ProductName);
                             devicesConfig.Write("X_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("Y_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("Z_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("RX_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("RY_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("RZ_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("Slider_Axis_Invert", "false", deviceInstance.ProductName);
-                            devicesConfig.Write("Dial_Axis_Invert", "false", deviceInstance.ProductName);
                             devicesConfig.Write("X_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("Y_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("Z_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("RX_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("RY_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("RZ_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("Slider_Axis_Curve", "0", deviceInstance.ProductName);
-                            devicesConfig.Write("Dial_Axis_Curve", "0", deviceInstance.ProductName);
-
                             devicesConfig.Write("X_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("X_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("X_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("Y_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("Y_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("Y_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Y_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Y_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Y_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("Z_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("Z_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("Z_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Z_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Z_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Z_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("RX_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("RX_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("RX_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RX_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RX_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RX_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("RY_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("RY_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("RY_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RY_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RY_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RY_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("RZ_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("RZ_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("RZ_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RZ_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RZ_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("RZ_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("Slider_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("Slider_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("Slider_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Slider_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Slider_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Slider_Axis_Saturation", "1", deviceInstance.ProductName);
 
+                            devicesConfig.Write("Dial_Axis_Mode", "0", deviceInstance.ProductName);
+                            devicesConfig.Write("Dial_Axis_Invert", "false", deviceInstance.ProductName);
+                            devicesConfig.Write("Dial_Axis_Curve", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Dial_Axis_DZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Dial_Axis_LDZ", "0", deviceInstance.ProductName);
                             devicesConfig.Write("Dial_Axis_Saturation", "1", deviceInstance.ProductName);
