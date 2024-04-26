@@ -59,5 +59,115 @@ namespace Star_Shitizen_Master_Mapping.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Furore {
+            get {
+                object obj = ResourceManager.GetObject("Furore", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Jura_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_Light {
+            get {
+                object obj = ResourceManager.GetObject("Jura_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Jura_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Jura_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("Jura_SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Jura_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("Jura_VariableFont_wght", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quantico_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Quantico_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quantico_BoldItalic {
+            get {
+                object obj = ResourceManager.GetObject("Quantico_BoldItalic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quantico_Italic {
+            get {
+                object obj = ResourceManager.GetObject("Quantico_Italic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quantico_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Quantico_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

@@ -1,0 +1,18 @@
+﻿<UserControl x:Name="uiBindingsForSelectedCategory" x:Class="Star_Shitizen_Master_Mapping.dynamicBindings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
+             mc:Ignorable="d" Width="722" Height="1025">
+    <Grid x:Name="uiCatergoryBindingsGrid" Width="722" Height="1025">
+        <Rectangle Stroke="#FF3A7187" Fill="#C90F2C3E"/>
+        <WrapPanel x:Name="uiCatergoryBindingsWrapPanel" Margin="0,29,0,939" HorizontalAlignment="Center" Width="702"/>
+        <Grid x:Name="uiCatergoryBindingsInnerGrid" Margin="0,113,0,0">
+            <ScrollViewer x:Name="uiCatergoryBindingsScroll" Margin="0,0,0,22" VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="uiCatergoryBindingsStack"/>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</UserControl>

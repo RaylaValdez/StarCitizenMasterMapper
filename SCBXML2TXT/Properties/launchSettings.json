@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "SCBXML2TXT": {
+      "commandName": "Project"
+    },
+    "AllBinds": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\StarFab\\Exports\\Data\\Mappings\\Data\\Libs\\Config\\Mappings\\layout_all_blank.xml\""
+    }
+  }
+}

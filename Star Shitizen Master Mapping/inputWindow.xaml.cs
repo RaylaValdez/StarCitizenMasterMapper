@@ -91,5 +91,24 @@ namespace Star_Shitizen_Master_Mapping
             SetVisible(false);
             action = null;
         }
+
+        private void eventSaveEnter(object sender, MouseEventArgs e)
+        {
+            uiDeviceConfigValueSaveButtonBox.Fill = HoverColor;
+            uiDeviceConfigValueSaveButtonBox.Stroke = HoverColorStroke;
+            uiDeviceConfigValueSaveButton.Foreground = HoverColorStroke;
+        }
+
+        private void eventSaveLeave(object sender, MouseEventArgs e)
+        { 
+            uiDeviceConfigValueSaveButtonBox.Fill = TglOff;
+            uiDeviceConfigValueSaveButtonBox.Stroke = TglOffStroke;
+            uiDeviceConfigValueSaveButton.Foreground = TglOn;
+        }
+
+        private void eventSaveClick(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

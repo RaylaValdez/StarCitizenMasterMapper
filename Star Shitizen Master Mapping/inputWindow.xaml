@@ -9,11 +9,11 @@
     <Grid Margin="0,0,0,225">
         <Rectangle Stroke="#FF3A7187" RadiusX="56.5" RadiusY="56.5" Fill="#FF0A1D29"/>
         <Label x:Name="uiDeviceConfigValueWindowLabel" Content="Precise Input&#xD;&#xA;" Height="59" Margin="22,13,224,0" VerticalAlignment="Top" FontSize="36" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold"/>
-        <Rectangle Stroke="#FF3A7187" RadiusX="15.5" RadiusY="15.5" Fill="#FF0A1D29" Margin="202,132,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="194"/>
-        <TextBox x:Name="uiDeviceConfigValueTextBox" TextWrapping="Wrap" Text="TextBox" Margin="218,132,0,0" FontFamily="Jura" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Center" Background="#FF0A1D29" Foreground="#FF377DB1" BorderBrush="#FF3A7187" Padding="0,5,0,0" HorizontalAlignment="Left" Width="162" Height="40" VerticalAlignment="Top" TextChanged="eventTextBoxChanged"/>
         <Rectangle x:Name="uiDeviceConfigValueSaveButtonBox" Stroke="#FF3A7187" RadiusX="15.5" RadiusY="15.5" Fill="#FF0A1D29" Margin="577,132,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="96"/>
-        <Label x:Name="uiDeviceConfigValueSaveButton" Content="Save" HorizontalAlignment="Left" Height="40" Margin="577,132,0,0" VerticalAlignment="Top" Width="96" FontFamily="Jura" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF377DB1" MouseUp="eventSaveMouseButtonUp"/>
+        <Label x:Name="uiDeviceConfigValueSaveButton" Content="Save" HorizontalAlignment="Left" Height="40" Margin="577,132,0,0" VerticalAlignment="Top" Width="96" FontFamily="Jura" FontSize="24" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="#FF377DB1" MouseUp="eventSaveMouseButtonUp" MouseEnter="eventSaveEnter" MouseLeave="eventSaveLeave" MouseLeftButtonUp="eventSaveClick"/>
         <Label x:Name="uiDeviceConfigValueDescriptionLabel" Content="Text Goes Here" Height="59" Margin="23,68,223,0" VerticalAlignment="Top" FontSize="28" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Rectangle Stroke="#FF3A7187" RadiusX="15.5" RadiusY="15.5" Margin="222,133,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155"/>
+        <TextBox x:Name="uiDeviceConfigValueTextBox" TextWrapping="Wrap" Text="TextBox" Margin="218,132,0,0" FontFamily="Jura" FontWeight="Bold" FontSize="24" HorizontalContentAlignment="Center" Foreground="#FF377DB1" Padding="0,5,0,0" HorizontalAlignment="Left" Width="162" Height="40" VerticalAlignment="Top" TextChanged="eventTextBoxChanged" BorderBrush="{x:Null}" Background="Transparent"/>
 
     </Grid>
 </UserControl>

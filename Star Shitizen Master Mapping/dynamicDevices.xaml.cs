@@ -62,7 +62,7 @@ namespace Star_Shitizen_Master_Mapping
         private void uiDeviceEnter(object sender, MouseEventArgs e)
         {
             uiDeviceRoundRect.Fill = CloseHoverFill;
-            uiDeviceRoundRect.Stroke = CloseHoverFill;
+            uiDeviceRoundRect.Stroke = CloseFontHover;
             uiDeviceLabel.Foreground = CloseFontHover;
 
             var anim = new DoubleAnimation(0.0f, uiDeviceScrollContainer.ScrollableWidth, TimeSpan.FromSeconds(2.5), FillBehavior.Stop) { AutoReverse = true, RepeatBehavior = RepeatBehavior.Forever };
@@ -101,7 +101,7 @@ namespace Star_Shitizen_Master_Mapping
             else
             {
                 uiDeviceRoundRect.Fill = CloseHoverFill;
-                uiDeviceRoundRect.Stroke = CloseHoverFill;
+                uiDeviceRoundRect.Stroke = CloseFontHover;
                 uiDeviceLabel.Foreground = CloseFontHover;
                 this.selected = true;
 

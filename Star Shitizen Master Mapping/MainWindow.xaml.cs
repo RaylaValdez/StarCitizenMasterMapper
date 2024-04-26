@@ -180,7 +180,7 @@ namespace Star_Shitizen_Master_Mapping
                 {
                     // Highlight Devices
                     uiDevicesRoundRect.Fill = CloseHoverFill;
-                    uiDevicesRoundRect.Stroke = CloseHoverFill;
+                    uiDevicesRoundRect.Stroke = CloseFontHover;
                     uiDevicesLabel.Foreground = CloseFontHover;
                     // Default Everything Else
                     defaultColor(uiElement.Binding);
@@ -191,7 +191,7 @@ namespace Star_Shitizen_Master_Mapping
                 {
                     // Highlight Binding
                     uiBindingRoundRect.Fill = CloseHoverFill;
-                    uiBindingRoundRect.Stroke = CloseHoverFill;
+                    uiBindingRoundRect.Stroke = CloseFontHover;
                     uiBindingLabel.Foreground = CloseFontHover;
                     // Defualt everything else
                     defaultColor(uiElement.Devices);
@@ -202,7 +202,7 @@ namespace Star_Shitizen_Master_Mapping
                 {
                     // Highlight Visual
                     uiVisualRoundRect.Fill = CloseHoverFill;
-                    uiVisualRoundRect.Stroke = CloseHoverFill;
+                    uiVisualRoundRect.Stroke = CloseFontHover;
                     uiVisualLabel.Foreground = CloseFontHover;
                     // Default everything else
                     defaultColor(uiElement.Devices);

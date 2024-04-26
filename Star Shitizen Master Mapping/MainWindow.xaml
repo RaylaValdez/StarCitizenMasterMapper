@@ -27,11 +27,11 @@
         <Label x:Name="uiMinButtonFont" Content="🗕" Height="45" Foreground="#FF3A7DB1" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" Margin="0,0,102,0" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="mouseOverMin" MouseLeave="mouseLeftMin" MouseLeftButtonUp="mouseMinNow" FontSize="42"/>
         <Label Content="Star Citizen : Master Mapper" HorizontalAlignment="Left" Height="78" Margin="10,-8,0,0" VerticalAlignment="Top" Width="940" FontSize="48" Foreground="#FF3A7DB1" FontFamily="Jura Medium"/>
         <Rectangle HorizontalAlignment="Left" Margin="0,55,0,0" Width="634" Fill="#C90F2C3E" Stroke="#FF3A7187"/>
-        <ScrollViewer x:Name="uiDevicePageScroll" HorizontalAlignment="Left" Margin="0,211,0,0" Width="634" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="uiDevicePageScroll" HorizontalAlignment="Left" Margin="0,211,0,0" Width="634" VerticalScrollBarVisibility="Auto" d:IsHidden="True">
             <StackPanel x:Name="uiDeviceStackPanel">
                 <Grid x:Name="uiVjoyGrid" Height="100">
                     <Rectangle x:Name="uiVjoyRoundRect" Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiVjoyEnter" MouseLeave="uiVjoyLeave" MouseLeftButtonUp="uiVjoyClick" Margin="19,10,18,10"/>
-                    <Label x:Name="uiVjoyLabel" Content="vJoy | Virtual Joystick" HorizontalAlignment="Right" Width="512" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiVjoyEnter" MouseLeave="uiVjoyLeave" MouseLeftButtonUp="uiVjoyClick" Margin="0,22,54,22"/>
+                    <Label x:Name="uiVjoyLabel" Content="vJoy | Virtual Joystick" HorizontalAlignment="Left" Width="507" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiVjoyEnter" MouseLeave="uiVjoyLeave" MouseLeftButtonUp="uiVjoyClick" Margin="32,22,0,22"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>
@@ -76,11 +76,98 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Rectangle x:Name="uiVjoySettingsRectangle" Stroke="#FF3A7187" Fill="#C90A1D29" Margin="-1,0,0,0"/>
-            <Label x:Name="uiVjoySettingsInstalledLabel" Content="vJoy isn't present on your system.&#xD;&#xA;The button below will open a browser window." HorizontalAlignment="Left" Height="215" VerticalAlignment="Top" Width="1061" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0"/>
+            <Label x:Name="uiVjoySettingsInstalledLabel" Content="vJoy isn't present on your system.&#xA;The button below will open a browser window." HorizontalAlignment="Left" Height="215" VerticalAlignment="Top" Width="1061" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,10,0,0"/>
             <Rectangle x:Name="uiVjoySettingsDownloadRRect" HorizontalAlignment="Left" Height="88" Margin="355,237,0,0" VerticalAlignment="Top" Width="371" RadiusX="33" RadiusY="33" Fill="#FF0F2634" Stroke="#FF3A7187" MouseEnter="uiVjoySettingsDownloadEnter" MouseLeave="uiVjoySettingsDownloadLeave" MouseLeftButtonUp="uiVjoySettingsDownloadClick"/>
             <Label x:Name="uiVjoySettingsDownloadLabel" Content="Take me there!" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="279" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiVjoySettingsDownloadEnter" MouseLeave="uiVjoySettingsDownloadLeave" MouseLeftButtonUp="uiVjoySettingsDownloadClick" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="402,255,0,0"/>
         </Grid>
-        <local:DeviceConfig x:Name="dynamicDeviceConfig" Margin="633,55,0,-1"/>
+        <local:DeviceConfig x:Name="dynamicDeviceConfig" Margin="633,55,0,-1" d:IsHidden="True"/>
+        <ScrollViewer x:Name="uiBindingPageScroll" HorizontalAlignment="Left" Margin="0,211,0,0" Width="634" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="uiDeviceStackPanel1">
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel" Content="On Foot" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect1" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer1" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel1" Content="EVA &amp; Zero G Traversal" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect2" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer2" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel2" Content="Flight" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect3" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer3" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel3" Content="Vehicles" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect4" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer4" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel4" Content="Turrets" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect5" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer5" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel5" Content="Social, Quick Keys, Lights" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect6" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer6" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel6" Content="Spectator" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Height="100">
+                    <Rectangle x:Name="uiBindingsRoundRect7" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
+                    <ScrollViewer x:Name="uiBindingsScrollContainer7" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                        <Label x:Name="uiBindingsLabel7" Content="Camera" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                    </ScrollViewer>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid x:Name="uiOnFootBindingsGrid" HorizontalAlignment="Left" Margin="633,55,0,0" Width="722">
+            <Rectangle Stroke="#FF3A7187" Fill="#C90F2C3E"/>
+            <WrapPanel x:Name="uiOnFootSectionsWrapPanel" Margin="0,29,0,939" HorizontalAlignment="Center" Width="702">
+                <Grid Width="175" Height="49">
+                    <Rectangle Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0"/>
+                    <Label Content="Movement" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152"/>
+                </Grid>
+                <Grid Width="175" Height="49">
+                    <Rectangle Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0"/>
+                    <Label Content="Combat" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152"/>
+                </Grid>
+                <Grid Width="175" Height="49">
+                    <Rectangle Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0"/>
+                    <Label Content="Equipment" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152"/>
+                </Grid>
+                <Grid Width="175" Height="49">
+                    <Rectangle Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0"/>
+                    <Label Content="Quick Keys" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152"/>
+                </Grid>
+            </WrapPanel>
+            <Grid Margin="0,113,0,0">
+                <ScrollViewer x:Name="uiOnFootMovementBindsScroll" Margin="0,0,0,22" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="uiOFMoveBindsStack">
+                        <Grid Height="100">
+                            <Rectangle x:Name="uiBindingsRoundRect8" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="702" RadiusX="23.5" RadiusY="23.5"/>
+                            <ScrollViewer x:Name="uiBindingsScrollContainer8" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="20,15,0,15" HorizontalAlignment="Left" Width="341">
+                                <Label x:Name="uiBindingsLabel8" Content="On Foot" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+                            </ScrollViewer>
+                            <Rectangle x:Name="uiCloseButtonBox_Copy" Height="42" VerticalAlignment="Top" Width="43" RadiusX="7.667" RadiusY="7.667" MouseEnter="mouseOverClose" Fill="#00000000" MouseLeave="mouseLeftCLose" HorizontalAlignment="Right" Margin="0,27,54,0" MouseLeftButtonUp="mouseCloseNow"/>
+                            <Label x:Name="uiCloseButtonFont_Copy" Content="+" Foreground="#FF3A7DB1" FontSize="48" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" MouseEnter="mouseOverCFont" MouseLeave="mouseLeftCFont" MouseLeftButtonUp="mouseCloseNow" Margin="664,20,10,20" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
 
     </Grid>
 
