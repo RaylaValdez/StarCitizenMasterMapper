@@ -133,9 +133,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventXAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceXAxisCurveSlider);
-            isDragging = true;
-            uiDeviceXAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceXAxisCurveSlider);
+                isDragging = true;
+                uiDeviceXAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceXAxisCurveSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("X Axis Curve", DeviceConfig.XAxisCurve, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "X_Axis_Curve", ref DeviceConfig.XAxisCurve, uiDeviceXAxisCurveSlider, uiDeviceXAxisCurvePercent);
+                });
+            }
         }
 
         private void eventXAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -184,9 +195,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventYAxisSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceYAxisCurveSlider);
-            isDragging = true;
-            uiDeviceYAxisCurveSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+               mouseStartPosition = e.GetPosition(uiDeviceYAxisCurveSlider);
+                isDragging = true;
+                uiDeviceYAxisCurveSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceYAxisCurveSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("Y Axis Curve", DeviceConfig.YAxisCurve, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "Y_Axis_Curve", ref DeviceConfig.YAxisCurve, uiDeviceYAxisCurveSlider, uiDeviceYAxisCurvePercent);
+                });
+            }
         }
 
         private void eventYAxisSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -233,9 +255,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventXAxisDZSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceXAxisDZSlider);
-            isDragging = true;
-            uiDeviceXAxisDZSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceXAxisDZSlider);
+                isDragging = true;
+                uiDeviceXAxisDZSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceXAxisDZSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("X Axis Deadzone", DeviceConfig.XAxisDZ, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "X_Axis_DZ", ref DeviceConfig.XAxisDZ, uiDeviceXAxisDZSlider, uiDeviceXAxisDZPercent);
+                });
+            }
         }
 
         private void eventXAxisDZSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -280,9 +313,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventXAxisSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceXAxisSaturationSlider);
-            isDragging = true;
-            uiDeviceXAxisSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceXAxisSaturationSlider);
+                isDragging = true;
+                uiDeviceXAxisSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceXAxisSaturationSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("X Axis Saturation", DeviceConfig.XAxisSaturation, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "X_Axis_Saturation", ref DeviceConfig.XAxisSaturation, uiDeviceXAxisSaturationSlider, uiDeviceXAxisSatPercent);
+                });
+            }
         }
 
         private void eventXAxisSatSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -330,9 +374,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventYAxisDZSliderClickDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount != 2)
+            {
             mouseStartPosition = e.GetPosition(uiDeviceYAxisDZSlider);
             isDragging = true;
             uiDeviceYAxisDZSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceYAxisDZSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("Y Axis Deadzone", DeviceConfig.YAxisDZ, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "Y_Axis_DZ", ref DeviceConfig.YAxisDZ, uiDeviceYAxisDZSlider, uiDeviceYAxisDZPercent);
+                });
+            }
         }
 
         private void eventYAxisDZSliderClickUp(object sender, MouseButtonEventArgs e)
@@ -377,9 +432,20 @@ namespace Star_Shitizen_Master_Mapping
 
         private void eventYAxisSatSliderClickDown(object sender, MouseButtonEventArgs e)
         {
-            mouseStartPosition = e.GetPosition(uiDeviceYAxisSaturationSlider);
-            isDragging = true;
-            uiDeviceYAxisSaturationSlider.CaptureMouse();
+            if (e.ClickCount != 2)
+            {
+                mouseStartPosition = e.GetPosition(uiDeviceYAxisSaturationSlider);
+                isDragging = true;
+                uiDeviceYAxisSaturationSlider.CaptureMouse();
+            }
+            else
+            {
+                uiDeviceYAxisSaturationSlider.ReleaseMouseCapture();
+                DeviceConfig.Instance.getSetPreciseInput("Y Axis Saturation", DeviceConfig.YAxisSaturation, (float value) =>
+                {
+                    DeviceConfig.curveMoveAndSet(value, "Y_Axis_Saturation", ref DeviceConfig.YAxisSaturation, uiDeviceYAxisSaturationSlider, uiDeviceYAxisSatPercent);
+                });
+            }
         }
 
         private void eventYAxisSatSliderClickUp(object sender, MouseButtonEventArgs e)

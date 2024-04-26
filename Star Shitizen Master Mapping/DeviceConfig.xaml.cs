@@ -563,7 +563,29 @@ namespace Star_Shitizen_Master_Mapping
         private void joyPointer(float x, float y)
         {
             xySeries.Clear();
-            xySeries.Add(deviceName, calculateQuadraticY(XAxisCurve, x), calculateQuadraticY(YAxisCurve, y));
+            float newX;
+            float newY;
+
+            if (x < 0)
+            {
+                newX = MathF.Max(MathF.Min(Remap(x, -1.0f, -XAxisDZ, -1.0f, 0.0f), 0f), -1f);
+            }
+            else
+            {
+                newX = MathF.Min(MathF.Max(Remap(x, XAxisDZ, 1.0f, 0.0f, 1.0f), 0f), 1f);
+            }
+            if (y < 0)
+            {
+                newY = MathF.Max(MathF.Min(Remap(y, -1.0f, -YAxisDZ, -1.0f, 0.0f), 0f), -1f);
+            }
+            else
+            {
+                newY = MathF.Min(MathF.Max(Remap(y, YAxisDZ, 1.0f, 0.0f, 1.0f), 0f), 1f);
+            }
+
+            newX = calculateQuadraticY(XAxisCurve, newX);
+            newY = calculateQuadraticY(YAxisCurve, newY);
+            xySeries.Add(deviceName, newX, newY);
         }
 
         private void povPointer(float povhat, float radius)
@@ -1482,9 +1504,9 @@ namespace Star_Shitizen_Master_Mapping
         {
             if (e.ClickCount != 2)
             {
-            mouseStartPosition = e.GetPosition(uiDeviceDialAxisCurveSlider);
-            isDragging = true;
-            uiDeviceDialAxisCurveSlider.CaptureMouse();
+                mouseStartPosition = e.GetPosition(uiDeviceDialAxisCurveSlider);
+                isDragging = true;
+                uiDeviceDialAxisCurveSlider.CaptureMouse();
             }
             else
             {
@@ -1574,8 +1596,12 @@ namespace Star_Shitizen_Master_Mapping
 
         public float calculateQuadraticY(float axiscurve, float x)
         {
-
-            return MathF.Pow(x, 1.0f + axiscurve * 2f);
+            float val = MathF.Pow(MathF.Abs(x), 1.0f + axiscurve * 2f);
+            if (float.IsNaN(val))
+            {
+                return 0.0f;
+            }
+            return val * MathF.Sign(x);
         }
 
         public float calculateRange(float axisvalue, float lowerDZ, float dz, float saturation)
