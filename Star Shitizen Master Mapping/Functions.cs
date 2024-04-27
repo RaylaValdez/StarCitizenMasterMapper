@@ -185,5 +185,35 @@ namespace Star_Shitizen_Master_Mapping
                 }
             }
         }
+
+        // dynamicBindings
+        public void categoryPage(bool state, dynamicCategory category)
+        {
+            if (category != null)
+            {
+                uiBindingsForCategory.Visibility = Visibility.Visible;
+                uiBindingsForCategory.Update(category);
+
+            }
+            else
+            {
+                uiBindingsForCategory.Visibility = Visibility.Hidden;
+            }
+        }
+
+        public void categorySelect(dynamicCategory category)
+        {
+            foreach (dynamicCategory i in bindingCategories)
+            {
+                if (i == category)
+                {
+                    i.setSelected(true);
+                }
+                else
+                {
+                    i.setSelected(false);
+                }
+            }
+        }
     }
 }

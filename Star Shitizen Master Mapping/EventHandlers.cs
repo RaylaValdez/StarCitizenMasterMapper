@@ -174,6 +174,7 @@ namespace Star_Shitizen_Master_Mapping
             uiVjoyRoundRect.Stroke = CloseFontHover;
             uiVjoyLabel.Foreground = CloseFontHover;
             uiDevicesRoundRect.Stroke = CloseFontHover;
+            uiBindingPageScroll.Visibility = Visibility.Hidden;
         }
 
         private void uiBindingEnter(object sender, MouseEventArgs e)
@@ -203,6 +204,7 @@ namespace Star_Shitizen_Master_Mapping
             uiVjoySettingsGrid.Visibility = Visibility.Hidden;
             devicePage(false);
             uiBindingRoundRect.Stroke = CloseFontHover;
+            uiBindingPageScroll.Visibility = Visibility.Visible;
         }
 
         private void uiVisualEnter(object sender, MouseEventArgs e)
@@ -230,6 +232,7 @@ namespace Star_Shitizen_Master_Mapping
             defaultColor(uiElement.Devices);
             devicePage(false);
             uiVisualRoundRect.Stroke = CloseFontHover;
+            uiBindingPageScroll.Visibility = Visibility.Hidden;
         }
 
         // Devices (Hardcoded)

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
              mc:Ignorable="d" Height="53" Width="175">
     <Grid x:Name="uiBindingSubCategoryGrid" Height="49" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175">
-        <Rectangle Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0"/>
-        <Label x:Name="uiBindingSubCategoryLabel" Content="SubCategory" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152"/>
+        <Rectangle x:Name="uiBindingSubCategoryRectangle" Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0" MouseLeftButtonUp="eventBindSubCategoryClick" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave"/>
+        <Label x:Name="uiBindingSubCategoryLabel" Content="{Binding Subcategory}" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152" MouseLeftButtonUp="eventBindSubCategoryClick" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave"/>
     </Grid>
 </UserControl>

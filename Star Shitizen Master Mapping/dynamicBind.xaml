@@ -8,9 +8,9 @@
     <Grid x:Name="uiBindForSelectedSubCategoryGrid">
         <Rectangle x:Name="uiBindForSelectedSubCategoryRRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="702" RadiusX="23.5" RadiusY="23.5"/>
         <ScrollViewer x:Name="uiBindForSelectedSubCategoryScrollContainer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="20,15,0,15" HorizontalAlignment="Left" Width="341">
-            <Label x:Name="uiBindForSelectedSubCategoryLabel" Content="Bind" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+            <Label x:Name="uiBindForSelectedSubCategoryLabel" Content="{Binding BindName}" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
         </ScrollViewer>
-        <Rectangle x:Name="uiBindForSelectedSubCategoryAddButtonBox" Height="40" VerticalAlignment="Center" RadiusX="7.667" RadiusY="7.667" MouseEnter="mouseOverClose" Fill="#00000000" MouseLeave="mouseLeftCLose" Margin="0,0,14,0" MouseLeftButtonUp="mouseCloseNow" HorizontalAlignment="Right" Width="40"/>
-        <Label x:Name="uiBindForSelectedSubCategoryAddButtonFont" Content="+" Foreground="#FF3A7DB1" FontSize="48" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" MouseEnter="mouseOverCFont" MouseLeave="mouseLeftCFont" MouseLeftButtonUp="mouseCloseNow" Margin="0,0,20,0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="28"/>
+        <Rectangle x:Name="uiBindForSelectedSubCategoryAddButtonBox" Height="40" VerticalAlignment="Center" RadiusX="7.667" RadiusY="7.667" Fill="#00000000" Margin="0,0,14,0" HorizontalAlignment="Right" Width="40"/>
+        <Label x:Name="uiBindForSelectedSubCategoryAddButtonFont" Content="+" Foreground="#FF3A7DB1" FontSize="48" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" Margin="0,0,20,0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="28"/>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCBXML2TXT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,16 @@ namespace Star_Shitizen_Master_Mapping
     /// </summary>
     public partial class dynamicBind : UserControl
     {
-        public dynamicBind()
+        public MyBinds Bind { get; set; }
+        public string BindName { get; set; }
+
+        public dynamicBind(MyBinds bind)
         {
+            DataContext = this;
+
+            Bind = bind;
+            BindName = bind.DisplayName;
+
             InitializeComponent();
         }
     }

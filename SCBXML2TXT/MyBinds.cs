@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SCBXML2TXT
 {
-    internal class MyBinds
+    public class MyBinds
     {
         public string Category;
         public string DisplayCategory;

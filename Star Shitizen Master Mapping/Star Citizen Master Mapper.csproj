@@ -42,6 +42,7 @@
     <PackageReference Include="vJoy.Wrapper" Version="1.0.0.5" />
     <ProjectReference Include="..\..\GLGraph\src\GLGraphs.Wpf\GLGraphs.Wpf.csproj" />
     <ProjectReference Include="..\..\GLGraph\src\GLGraphs\GLGraphs.csproj" />
+    <ProjectReference Include="..\SCBXML2TXT\SCBXML2CS.csproj" />
     <Resource Include="Resources\Fonts\Furore.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
