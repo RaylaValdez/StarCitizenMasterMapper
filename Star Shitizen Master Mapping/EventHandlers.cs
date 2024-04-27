@@ -175,6 +175,7 @@ namespace Star_Shitizen_Master_Mapping
             uiVjoyLabel.Foreground = CloseFontHover;
             uiDevicesRoundRect.Stroke = CloseFontHover;
             uiBindingPageScroll.Visibility = Visibility.Hidden;
+            uiBindingsForCategory.Visibility = Visibility.Hidden;
         }
 
         private void uiBindingEnter(object sender, MouseEventArgs e)
@@ -205,6 +206,8 @@ namespace Star_Shitizen_Master_Mapping
             devicePage(false);
             uiBindingRoundRect.Stroke = CloseFontHover;
             uiBindingPageScroll.Visibility = Visibility.Visible;
+            categoryPage(true,selectedCategory);
+            categorySelect(selectedCategory);
         }
 
         private void uiVisualEnter(object sender, MouseEventArgs e)

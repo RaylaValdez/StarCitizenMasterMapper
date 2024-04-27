@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
-             mc:Ignorable="d" Height="53" Width="175">
-    <Grid x:Name="uiBindingSubCategoryGrid" Height="49" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175">
-        <Rectangle x:Name="uiBindingSubCategoryRectangle" Stroke="#FF3A7187" RadiusX="23.5" RadiusY="23.5" HorizontalAlignment="Left" Width="170" Margin="2,0,0,0" MouseLeftButtonUp="eventBindSubCategoryClick" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave"/>
-        <Label x:Name="uiBindingSubCategoryLabel" Content="{Binding Subcategory}" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="12,10,0,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" HorizontalAlignment="Left" Width="152" MouseLeftButtonUp="eventBindSubCategoryClick" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave"/>
+             mc:Ignorable="d" Height="53" Width="165">
+    <Grid x:Name="uiBindingSubCategoryGrid">
+        <Path x:Name="uiBindingSubCategoryRectangle" Margin="5,5,5,5" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave" MouseLeftButtonUp="eventBindSubCategoryClick" Stroke="#FF3A7187" Stretch="Fill">
+            <Path.Data>
+                <PathGeometry Figures="m 30.078259,9.9365683 h 41.57746 c 0.942273,0 1.700854,0.7585807 1.700854,1.7008537 l 0,8.835536 -2.260345,2.428194 -41.017969,0 c -0.942273,0 -1.700854,-0.758581 -1.700854,-1.700855 v -9.562875 c 0,-0.942273 0.758581,-1.7008537 1.700854,-1.7008537 z"/>
+            </Path.Data>
+        </Path>
+        <Label x:Name="uiBindingSubCategoryLabel" Content="{Binding Subcategory}" Foreground="#FF377DB1" FontFamily="Jura" FontWeight="Bold" Margin="10,10,10,10" HorizontalContentAlignment="Center" FontSize="24" Padding="5,-8,5,5" MouseLeftButtonUp="eventBindSubCategoryClick" MouseEnter="eventBindSubCategoryEnter" MouseLeave="eventBindSubCategoryLeave"/>
     </Grid>
 </UserControl>

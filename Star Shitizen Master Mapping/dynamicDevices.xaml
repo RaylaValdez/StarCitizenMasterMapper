@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Width="480" Height="80">
     <Grid>
-        <Grid x:Name="uiDeviceGrid" Height="100">
-            <Rectangle x:Name="uiDeviceRoundRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="582" RadiusX="23.5" RadiusY="23.5" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick"/>
-            <ScrollViewer x:Name="uiDeviceScrollContainer" HorizontalAlignment="Center" Height="70" VerticalAlignment="Center" Width="570" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
-                <Label x:Name="uiDeviceLabel" Content="{Binding deviceName}" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+        <Grid x:Name="uiDeviceGrid">
+            <Path x:Name="uiDeviceRoundRect" Margin="10,10,10,10" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" Stroke="#FF3A7187" Stretch="Fill">
+                <Path.Data>
+                    <PathGeometry Figures="m 900.8547,5.9384775 h 118.4696 c 0.8803,0 1.5891,0.7087542 1.5891,1.5891351 V 18.976987 l -2.7285,2.775996 -117.3302,0 c -0.88038,0 -1.58914,-0.708754 -1.58914,-1.589135 V 7.5276126 c 0,-0.8803809 0.70876,-1.5891351 1.58914,-1.5891351 z"/>
+                </Path.Data>
+            </Path>
+            <ScrollViewer x:Name="uiDeviceScrollContainer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="20,20,20,20">
+                <Label x:Name="uiDeviceLabel" Content="{Binding deviceName}" FontFamily="Jura" FontWeight="Bold" FontSize="24" Foreground="#FF377DB1" MouseEnter="uiDeviceEnter" MouseLeave="uiDeviceLeave" MouseLeftButtonUp="uiDeviceClick" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
             </ScrollViewer>
         </Grid>
     </Grid>

@@ -36,8 +36,8 @@ namespace Star_Shitizen_Master_Mapping
         SolidColorBrush StrokeDefault = new SolidColorBrush();
 
         // Animations
-        ThicknessAnimation toggleAnimationOff = new ThicknessAnimation(new Thickness(0, 19, 197, 0), new Duration(TimeSpan.FromSeconds(0.05)));
-        ThicknessAnimation toggleAnimationOn = new ThicknessAnimation(new Thickness(0, 18, 177, 0), new Duration(TimeSpan.FromSeconds(0.05)));
+        ThicknessAnimation toggleAnimationOff = new ThicknessAnimation(new Thickness(0, 0, 0, 0), new Duration(TimeSpan.FromSeconds(0.05)));
+        ThicknessAnimation toggleAnimationOn = new ThicknessAnimation(new Thickness(20, 0, 0, 0), new Duration(TimeSpan.FromSeconds(0.05)));
 
         // Variables
         enum uiElement { Devices, Binding, Visual, Toggle, vJoy }
@@ -53,6 +53,7 @@ namespace Star_Shitizen_Master_Mapping
         // Define devicesConfig.ini
         public static IniFile devicesConfig = new IniFile("devicesConfig.ini");
 
+        public dynamicCategory ?selectedCategory;
 
         public MainWindow()
         {

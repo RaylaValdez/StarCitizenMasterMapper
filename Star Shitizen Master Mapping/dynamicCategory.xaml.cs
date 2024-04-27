@@ -57,12 +57,6 @@ namespace Star_Shitizen_Master_Mapping
         {
             MainWindow.Instance.categoryPage(true, this);
             MainWindow.Instance.categorySelect(this);
-
-            if (selectedSubcategory == null)
-            {
-                selectedSubcategory = Subcategories.FirstOrDefault();
-                subcategorySelect(selectedSubcategory);
-            }
         }
 
         private void eventBindingCategoryEnter(object sender, MouseEventArgs e)
@@ -83,6 +77,15 @@ namespace Star_Shitizen_Master_Mapping
 
         }
 
+        private void selectSelectedSubcategory()
+        {
+            if (selectedSubcategory == null)
+            {
+                selectedSubcategory = Subcategories.FirstOrDefault();
+            }
+            subcategorySelect(selectedSubcategory);
+        }
+
         public void setSelected(bool selected)
         {
             if (!selected)
@@ -100,6 +103,7 @@ namespace Star_Shitizen_Master_Mapping
                 uiBindingCategoryLabel.Foreground = CloseFontHover;
                 this.selected = true;
 
+                selectSelectedSubcategory();
             }
         }
 

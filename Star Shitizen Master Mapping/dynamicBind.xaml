@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Star_Shitizen_Master_Mapping"
-             mc:Ignorable="d" Width="722" Height="100">
+             mc:Ignorable="d" Width="580" Height="75">
     <Grid x:Name="uiBindForSelectedSubCategoryGrid">
-        <Rectangle x:Name="uiBindForSelectedSubCategoryRRect" HorizontalAlignment="Center" Height="80" Stroke="#FF3A7187" VerticalAlignment="Center" Width="702" RadiusX="23.5" RadiusY="23.5"/>
-        <ScrollViewer x:Name="uiBindForSelectedSubCategoryScrollContainer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="20,15,0,15" HorizontalAlignment="Left" Width="341">
-            <Label x:Name="uiBindForSelectedSubCategoryLabel" Content="{Binding BindName}" Height="56" FontFamily="Jura" FontWeight="Bold" FontSize="36" Foreground="#FF377DB1" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
+        <Path x:Name="uiBindForSelectedSubCategoryRRect" Margin="5,5,5,5" Stroke="#FF3A7187" Stretch="Fill">
+            <Path.Data>
+                <PathGeometry Figures="M 25.944461,10.507672 H 173.35525 c 0.94228,0 1.70086,0.758581 1.70086,1.700854 l 0,12.949581 -2.45254,2.547481 -146.659109,0 c -0.942273,0 -1.700854,-0.758581 -1.700854,-1.700854 V 12.208526 c 0,-0.942273 0.758581,-1.700854 1.700854,-1.700854 z"/>
+            </Path.Data>
+        </Path>
+        <ScrollViewer x:Name="uiBindForSelectedSubCategoryScrollContainer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="20,15,0,15" HorizontalAlignment="Left" Width="280">
+            <Label x:Name="uiBindForSelectedSubCategoryLabel" Content="{Binding BindName, FallbackValue=Bind Name Bind Long}" Height="43" FontFamily="Jura" FontWeight="Bold" FontSize="24" Foreground="#FF377DB1" UseLayoutRounding="True" HorizontalContentAlignment="Stretch"/>
         </ScrollViewer>
         <Rectangle x:Name="uiBindForSelectedSubCategoryAddButtonBox" Height="40" VerticalAlignment="Center" RadiusX="7.667" RadiusY="7.667" Fill="#00000000" Margin="0,0,14,0" HorizontalAlignment="Right" Width="40"/>
         <Label x:Name="uiBindForSelectedSubCategoryAddButtonFont" Content="+" Foreground="#FF3A7DB1" FontSize="48" FontFamily="Cascadia Mono" Padding="0,0,0,0" FlowDirection="RightToLeft" FontWeight="Light" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" Margin="0,0,20,0" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="28"/>

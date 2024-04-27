@@ -187,7 +187,7 @@ namespace Star_Shitizen_Master_Mapping
         }
 
         // dynamicBindings
-        public void categoryPage(bool state, dynamicCategory category)
+        public void categoryPage(bool state, dynamicCategory ?category)
         {
             if (category != null)
             {
@@ -201,13 +201,14 @@ namespace Star_Shitizen_Master_Mapping
             }
         }
 
-        public void categorySelect(dynamicCategory category)
+        public void categorySelect(dynamicCategory ?category)
         {
             foreach (dynamicCategory i in bindingCategories)
             {
                 if (i == category)
                 {
                     i.setSelected(true);
+                    selectedCategory = i;
                 }
                 else
                 {
